@@ -1,0 +1,20 @@
+<svg width="562" height="532" viewBox="0 0 562 532" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<path d="M457.069 479.602C461.521 468.568 470.415 463.363 479.622 458.531C491.113 452.5 503.091 447.051 507.521 431.577" stroke="#1B3F6A" stroke-width="8.13007" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round" />
+	<path d="M463.204 502.918C466.096 490.047 473.862 479.94 485.361 473.637C491.378 470.339 498.057 468.392 503.83 464.616C516.835 456.107 526.408 442.13 527.084 426.347" stroke="#1B3F6A" stroke-width="8.13007" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round" />
+	<path d="M521.349 468.896C517.913 473.82 513.784 478.195 508.486 481.148C497.934 487.029 485.604 490.095 480.889 502.542" stroke="#1B3F6A" stroke-width="8.13007" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round" />
+	<path d="M27.2 79.6944C31.6514 68.6608 40.5459 63.4553 49.7525 58.6234C61.2441 52.5924 73.2214 47.1435 77.6518 31.6697" stroke="#C8923A" stroke-width="8.13007" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round" />
+	<path d="M33.3344 103.011C36.227 90.1394 43.9926 80.0327 55.4921 73.7298C61.5092 70.4321 68.1879 68.4847 73.9608 64.7086C86.9659 56.2002 96.5385 42.2231 97.2144 26.4401" stroke="#C8923A" stroke-width="8.13007" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round" />
+	<path d="M91.4794 68.9888C88.0436 73.9131 83.9148 78.2874 78.6166 81.2405C68.0646 87.1213 55.7345 90.1881 51.0198 102.635" stroke="#C8923A" stroke-width="8.13007" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round" />
+	<mask id="mask0_5605_434" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="9" y="0" width="522" height="521">
+		<path d="M530.036 356.241C530.036 368.967 524.982 381.173 515.985 390.174L481.951 424.225L400.164 505.972C391.163 514.969 378.957 520.022 366.231 520.022H57.9939C31.4842 520.022 9.9939 498.532 9.9939 472.022V203.793C9.9939 191.066 15.048 178.861 24.045 169.859L78.0808 115.799L179.879 14.0506C188.88 5.05392 201.085 0 213.812 0H482.036C508.546 0 530.036 21.4903 530.036 48V356.241Z" fill="#D9D9D9" />
+	</mask>
+	<g mask="url(#mask0_5605_434)">
+		<rect x="-0.00195312" y="-10.0054" width="540.034" height="540.034" fill="url(#pattern0_5605_434)" />
+	</g>
+	<defs>
+		<pattern id="pattern0_5605_434" patternContentUnits="objectBoundingBox" width="1" height="1">
+			<use xlink:href="#image0_5605_434" transform="scale(0.001)" />
+		</pattern>
+		<image id="image0_5605_434" width="1000" height="1000" preserveAspectRatio="none" href="/images/nurse-and-patient-hugging-and-smilling.webp" />
+	</defs>
+</svg>
