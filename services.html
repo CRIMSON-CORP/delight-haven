@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Delight Haven</title>
+  </head>
+  <body class="bg-canvas">
+    <header class="py-6 px-5 backdrop-blur-xs bg-nav-light fixed top-0 left-0 w-full z-header">
+      <div class="container flex items-center justify-between">
+        <a href="/" class="text-brand-trust">
+          <svg width="202" height="58">
+            <use href="/icons.svg#logo-full" />
+          </svg>
+        </a>
+        <nav class="relative">
+          <input type="checkbox" id="nav-toggle" class="hidden peer" />
+          <ul
+            class="border-subtle border opacity-0 pointer-events-none peer-checked:pointer-events-auto peer-checked:opacity-100 md:border-non md:pointer-events-auto md:opacity-100 absolute top-full right-0 gap-3 p-4 bg-surface-primary rounded-2xl flex-col md:flex-row md:p-0 md:bg-transparent md:static min-w-max flex md:items-center md:gap-6 font-bold text-brand-trust md:[&>li>a]:py-2 [&>li>a]:block"
+          >
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+          <label for="nav-toggle" class="p-4 md:hidden cursor-pointer">
+            <svg width="24" height="24">
+              <use href="/icons.svg#hamburger-menu" />
+            </svg>
+          </label>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section
+        id="hero"
+        class="relative overflow-hidden bg-surface-primary grid h-screen max-h-230 min-h-660px isolate py-16 px-5"
+      >
+        <div class="container flex flex-col justify-center items-center">
+          <div class="flex flex-col gap-16 items-center max-w-225">
+            <header class="flex flex-col items-center text-center">
+              <span class="font-medium leading-snug text-text-secondary mb-2 text-sm md:text-base"
+                >WHAT WE OFFER</span
+              >
+              <h1
+                class="relative text-heading text-[40px] md:text-5xl font-bold leading-[1.1875] tracking-[-0.2px] mb-9.5"
+              >
+                Our Services
+                <span
+                  class="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 h-1.5 w-40 rounded-full bg-brand-warmth"
+                ></span>
+              </h1>
+              <p>
+                At Delight Haven Assisted Living, Maryland, we provide a comprehensive range of
+                services designed to support the whole person in terms of body, mind, and spirit, in
+                a warm, homelike setting.
+              </p>
+            </header>
+            <div class="relative">
+              <img
+                fetchpriority="high"
+                class="aspect-square w-[clamp(280px,25vw,396px)] rounded-3xl"
+                alt="old and young woman smiling exchanging gifts"
+                src="/images/old-and-young-woman-smiling-exchanging-gifts.webp"
+              />
+              <img
+                fetchpriority="high"
+                class="aspect-square w-[clamp(184px,18vw,300px)] rounded-3xl absolute top-1/2 -translate-y-1/2 -translate-x-full -left-5"
+                alt="young woman assiting aged man while walking and smiling"
+                src="/images/young-woman-assiting-aged-man-while-walking-and-smiling.webp"
+              />
+              <img
+                fetchpriority="high"
+                class="aspect-square w-[clamp(184px,18vw,300px)] rounded-3xl absolute top-1/2 -translate-y-1/2 translate-x-full -right-5"
+                alt="nurse talking with an aged woman"
+                src="/images/nurse-talking-with-an-aged-woman.webp"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="services" class="py-16 px-5">
+        <div class="container flex flex-col gap-12">
+          <header class="flex flex-col items-center text-center max-w-225 mx-auto">
+            <h2
+              class="relative text-heading text-2xl md:text-[32px] font-bold leading-[1.1875] tracking-[-0.2px] mb-9.5"
+            >
+              Comprehensive Care Services
+              <span
+                class="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 h-1.5 w-40 rounded-full bg-brand-warmth"
+              ></span>
+            </h2>
+            <p>
+              Each service is delivered with professionalism, warmth, and a deep commitment to
+              enhancing the quality of life for every resident
+            </p>
+          </header>
+          <div class="grid md:grid-cols-2 items-stretch w-full">
+            <article
+              class="relative md:col-span-2 p-6 bg-brand-calm/24 border-b border-subtle flex flex-col items-start gap-4"
+            >
+              <span
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-trust rounded-tr-2xl rounded-br-2xl"
+              ></span>
+              <div class="p-2 rounded-2xl bg-surface-primary">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#agreement" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-heading">
+                Personalized Assisted Living Services in Randallstown
+              </h3>
+              <div class="flex flex-col gap-10">
+                <span
+                  >Our assisted living services are designed to help residents with daily routines
+                  while encouraging independence and confidence.</span
+                >
+
+                <div>
+                  <span>Services include:</span>
+                  <ul class="list-disc pl-6">
+                    <li>Help with dressing, bathing, and personal care</li>
+                    <li>Medication reminders and supervision</li>
+                    <li>Grooming and hygiene support</li>
+                    <li>Mobility assistance and fall prevention support</li>
+                    <li>Regular wellness monitoring</li>
+                    <li>Structured daily routines for stability and comfort</li>
+                  </ul>
+                </div>
+                <p>
+                  Families searching for reliable senior care in Randallstown can feel confident
+                  knowing their loved one is supported with patience and respect.
+                </p>
+              </div>
+            </article>
+            <article
+              class="relative p-6 border-r border-b border-subtle flex flex-col items-start gap-4"
+            >
+              <span
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-warmth rounded-tr-2xl rounded-br-2xl"
+              ></span>
+              <div class="p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#home" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-heading">
+                Comfortable Senior Living Near Paxton Road
+              </h3>
+              <div class="flex flex-col gap-10">
+                <span
+                  >Our assisted living home near Paxton Road in Randallstown is designed for safety
+                  and comfort. Features include:</span
+                >
+
+                <ul class="list-disc pl-6">
+                  <li>Fully furnished private or shared bedrooms</li>
+                  <li>Cozy common areas for conversation and relaxation</li>
+                  <li>Safe layouts that support easy movement</li>
+                  <li>Clean, peaceful surroundings</li>
+                </ul>
+                <p>Every space is arranged to help residents feel settled and secure.</p>
+              </div>
+            </article>
+            <article class="relative p-6 border-b border-subtle flex flex-col items-start gap-4">
+              <span
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-warmth rounded-tr-2xl rounded-br-2xl"
+              ></span>
+              <div class="p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#security-check" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-heading">Safety and Professional Support</h3>
+              <div class="flex flex-col gap-10">
+                <span
+                  >Safety is a top priority at our assisted living home in Randallstown. Our trained
+                  staff provide attentive supervision and responsive support in a secure setting.
+                  <br />
+                  Families can have peace of mind knowing their loved ones are cared for with
+                  awareness and compassion.</span
+                >
+              </div>
+            </article>
+            <article class="relative p-6 border-r border-subtle flex flex-col items-start gap-4">
+              <span
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-warmth rounded-tr-2xl rounded-br-2xl"
+              ></span>
+              <div class="p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#idea" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-heading">Activities and Social Engagement</h3>
+              <div class="flex flex-col gap-10">
+                <span>We encourage connection and meaningful daily experiences through:</span>
+
+                <ul class="list-disc pl-6">
+                  <li>Recreational activities</li>
+                  <li>Light exercise and gentle movement programs</li>
+                  <li>Social gatherings and celebrations</li>
+                  <li>Creative and memory-support activities</li>
+                </ul>
+                <p>Residents participate at their own pace in a supportive environment.</p>
+              </div>
+            </article>
+            <article class="relative p-6 flex flex-col items-start gap-4">
+              <span
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-warmth rounded-tr-2xl rounded-br-2xl"
+              ></span>
+              <div class="p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#kitchen-utensils" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-heading">Nutrition and Wellness</h3>
+              <div class="flex flex-col gap-10">
+                <span
+                  >Healthy meals play an important role in senior living. At our Randallstown
+                  assisted living home, residents enjoy:</span
+                >
+
+                <ul class="list-disc pl-6">
+                  <li>Freshly prepared home-style meals</li>
+                  <li>Balanced menus designed with care</li>
+                  <li>Accommodation for special dietary needs</li>
+                  <li>Healthy snacks and hydration throughout the day</li>
+                  <li>Social dining experiences that encourage connection</li>
+                </ul>
+                <p>Mealtimes are warm, relaxed, and welcoming.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="difference" class="py-16 px-5 bg-surface-primary">
+        <div class="container grid grid-cols-1 md:grid-cols-2 items-center gap-x-16 gap-y-12">
+          <div class="flex flex-col items-start">
+            <span class="font-medium leading-snug text-text-secondary mb-2 text-sm md:text-base"
+              >OUR DIFFERENCE</span
+            >
+            <h2
+              class="relative text-heading text-2xl md:text-[32px] font-bold leading-[1.1875] tracking-[-0.2px] mb-9.5"
+            >
+              Why Families Choose Our Assisted Living Home in Randallstown
+              <span
+                class="absolute top-[calc(100%+8px)] left-0 h-1.5 w-40 rounded-full bg-brand-warmth"
+              ></span>
+            </h2>
+            <div class="max-w-147.5 flex flex-col gap-10">
+              <span
+                >Families looking for senior living near Paxton Road choose Delight Haven because we
+                focus on comfort, communication, and personal attention.</span
+              >
+
+              <ul class="list-disc pl-6">
+                <li>Personalized care plans for each resident</li>
+                <li>Experienced and compassionate caregivers</li>
+                <li>Comfortable, fully furnished living spaces</li>
+                <li>Nutritious home-style meals prepared daily</li>
+                <li>A safe and supportive setting</li>
+                <li>Open communication with families</li>
+                <li>A peaceful environment that feels like home</li>
+              </ul>
+              <p>
+                We are proud to serve seniors and families throughout Randallstown and the
+                surrounding communities.
+              </p>
+            </div>
+          </div>
+          <img
+            src="/images/nurse-and-aged-woman-smillig-at-camera.webp"
+            alt="nurse and aged woman smillig at camera"
+            loading="lazy"
+            class="rounded-4xl aspect-588/547 object-top object-cover"
+          />
+        </div>
+      </section>
+
+      <section id="book" class="py-16 px-5 relative isolate">
+        <div class="absolute inset-0 -z-10">
+          <img
+            src="/images/nurse-talking-to-patient.webp"
+            alt="nurse talking to patient"
+            class="w-full h-full object-top object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-[3px] -z-10"></div>
+        <div class="container flex flex-col items-center gap-12">
+          <header class="flex flex-col items-center text-center max-w-258 text-inverse">
+            <h2
+              class="relative text-2xl md:text-[32px] font-bold leading-[1.1875] tracking-[-0.2px] mb-9.5"
+            >
+              Looking for Assisted Living in Randallstown?
+              <span
+                class="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 h-1.5 w-40 rounded-full bg-brand-warmth"
+              ></span>
+            </h2>
+            <p>
+              Choosing senior care is a meaningful step. Our team is here to answer your questions
+              and guide you with care and understanding. Come visit our assisted living home near
+              Paxton Road and see how Delight Haven can provide comfort, support, and peace of mind.
+            </p>
+          </header>
+          <div class="flex flex-wrap items-center justify-center w-full gap-4">
+            <a
+              href=""
+              class="py-4 px-5 md:py-5 md:px-6 flex items-center justify-center gap-2 outline outline-dashed outline-brand-warmth rounded-full text-brand-warmth -outline-offset-1"
+            >
+              <svg width="24" height="24">
+                <use href="/icons.svg#calendar" />
+              </svg>
+              <span>Schedule a Tour Today</span>
+            </a>
+            <a
+              href=""
+              class="py-4 px-5 md:py-5 md:px-6 bg-brand-warmth flex items-center justify-center gap-2 rounded-full text-inverse shadow-[0px_0px_8px_0px_rgba(245,241,232,0.16),inset_1px_0px_8px_0px_rgba(255,255,255,0.16),inset_-1px_0px_8px_0px_rgba(255,255,255,0.16)]"
+            >
+              <svg width="24" height="24">
+                <use href="/icons.svg#telephone" />
+              </svg>
+              <span>Speak With Our Care Team</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-[#091626] py-16 px-5 pb-0">
+      <div class="container text-sm md:text-base text-brand-calm flex flex-col gap-12">
+        <div
+          class="flex flex-wrap items-center md:justify-between gap-x-8 gap-y-12 *:max-w-50.5 *:md:max-w-75.25"
+        >
+          <div class="flex flex-col">
+            <a href="/" class="text-inverse">
+              <svg width="202" height="58">
+                <use href="/icons.svg#logo-full" />
+              </svg>
+            </a>
+            <p>
+              Providing compassionate, dignified care in a warm, homelike environment where every
+              resident is treated like family
+            </p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h2 class="font-bold text-inverse">Quick Links</h2>
+            <ul class="grid gap-3">
+              <li><a href="">Home</a></li>
+              <li><a href="">About Us</a></li>
+              <li><a href="">Services</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h2 class="font-bold text-inverse">Contact</h2>
+            <ul class="grid gap-3">
+              <li>
+                <a href="tel:(410) 456-0123" class="flex items-center gap-2">
+                  <svg width="20" height="20">
+                    <use href="/icons.svg#call" />
+                  </svg>
+                  <span>(410) 456-0123</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@DelightHavenliving.com" class="flex items-center gap-2">
+                  <svg width="20" height="20">
+                    <use href="/icons.svg#envelope" />
+                  </svg>
+                  <span>hello@DelightHavenliving.com</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@DelightHavenliving.com" class="flex items-center gap-2">
+                  <svg width="20" height="20">
+                    <use href="/icons.svg#location" />
+                  </svg>
+                  <span>Baltimore, Maryland, USA</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h2 class="font-bold text-inverse">Follow Us</h2>
+            <div class="flex items-stretch gap-3">
+              <a href="" class="inline-block p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#facebook" />
+                </svg>
+              </a>
+              <a href="" class="inline-block p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#linkedin" />
+                </svg>
+              </a>
+              <a href="" class="inline-block p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#instagram" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="pt-6 pb-12 border-t border-subtle/16 flex justify-center items-center gap-6">
+          <p class="text-center text-sm">
+            &copy; 2026 Delight Haven Assited Living. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

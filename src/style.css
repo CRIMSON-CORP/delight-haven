@@ -39,7 +39,16 @@
 
   --color-text-secondary: #5a6a7a;
 
-  --background-image-nav: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  --background-image-nav-dark: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  --background-image-nav-light: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
   --background-image-hero-gradient-desktop: linear-gradient(
     264.55deg,
     rgba(0, 0, 0, 0) 2.12%,
