@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Delight Haven</title>
+  </head>
+  <body class="bg-canvas">
+    <header class="py-6 px-5 backdrop-blur-xs bg-nav-light fixed top-0 left-0 w-full z-header">
+      <div class="container flex items-center justify-between">
+        <a href="/" class="text-brand-trust">
+          <svg width="202" height="58">
+            <use href="/icons.svg#logo-full" />
+          </svg>
+        </a>
+        <nav class="relative">
+          <input type="checkbox" id="nav-toggle" class="hidden peer" />
+          <ul
+            class="border-subtle border opacity-0 pointer-events-none peer-checked:pointer-events-auto peer-checked:opacity-100 md:border-none md:pointer-events-auto md:opacity-100 absolute top-full right-0 gap-3 p-4 bg-surface-primary rounded-2xl flex-col md:flex-row md:p-0 md:bg-transparent md:static min-w-max flex md:items-center md:gap-6 font-bold text-brand-trust md:[&>li>a]:py-2 [&>li>a]:block"
+          >
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+          <label for="nav-toggle" class="p-4 md:hidden cursor-pointer">
+            <svg width="24" height="24">
+              <use href="/icons.svg#hamburger-menu" />
+            </svg>
+          </label>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section
+        id="hero"
+        class="relative overflow-hidden bg-surface-primary grid min-h-screen max-h-225 py-38.5 isolate px-5"
+      >
+        <div class="container flex items-center">
+          <div class="grid md:grid-cols-[0.442fr_0.558fr] items-center gap-16">
+            <svg
+              width="520"
+              height="520"
+              viewBox="0 0 520 520"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              class="w-full h-auto"
+            >
+              <mask
+                id="mask0_5605_714"
+                style="mask-type: alpha"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="520"
+                height="520"
+              >
+                <path
+                  d="M520 356.224C520 368.95 514.946 381.155 505.95 390.156L471.918 424.206L390.139 505.949C381.138 514.946 368.932 520 356.205 520H48C21.4903 520 0 498.51 0 472V203.784C0 191.058 5.05382 178.853 14.0504 169.852L68.0811 115.794L169.87 14.0512C178.871 5.05415 191.077 0 203.804 0H472C498.51 0 520 21.4903 520 48V356.224Z"
+                  fill="#D9D9D9"
+                />
+              </mask>
+              <g mask="url(#mask0_5605_714)">
+                <rect
+                  x="-9.99316"
+                  y="-10.0117"
+                  width="540"
+                  height="540"
+                  fill="url(#pattern0_5605_714)"
+                />
+              </g>
+              <rect x="17.0068" y="0" width="410" height="439" fill="url(#pattern1_5605_714)" />
+              <defs>
+                <pattern
+                  id="pattern0_5605_714"
+                  patternContentUnits="objectBoundingBox"
+                  width="1"
+                  height="1"
+                >
+                  <use
+                    xlink:href="#image0_5605_714"
+                    transform="translate(-0.184272 -0.000171817) scale(0.00136852)"
+                  />
+                </pattern>
+                <pattern
+                  id="pattern1_5605_714"
+                  patternContentUnits="objectBoundingBox"
+                  width="1"
+                  height="1"
+                >
+                  <use
+                    xlink:href="#image1_5605_714"
+                    transform="matrix(0.000901487 0 0 0.000841936 -0.283195 -0.0387388)"
+                  />
+                </pattern>
+                <image
+                  id="image0_5605_714"
+                  width="1000"
+                  height="731"
+                  preserveAspectRatio="none"
+                  href="/images/youg-and-old-woman-smilling.webp"
+                />
+                <image
+                  id="image1_5605_714"
+                  width="2000"
+                  height="1461"
+                  preserveAspectRatio="none"
+                  href="/images/youg-and-old-woman-smilling-transparent.webp"
+                />
+              </defs>
+            </svg>
+
+            <header class="flex flex-col items-start">
+              <span class="font-medium leading-snug text-text-secondary mb-2 text-sm md:text-base"
+                >GET IN TOUCH</span
+              >
+              <h1
+                class="relative text-heading text-[40px] md:text-5xl font-bold leading-[1.1875] tracking-[-0.2px] mb-9.5"
+              >
+                Contact Us
+                <span
+                  class="absolute top-[calc(100%+8px)] left-0 h-1.5 w-40 rounded-full bg-brand-warmth"
+                ></span>
+              </h1>
+              <p>
+                We understand that choosing the right care for your loved one is a deeply personal
+                decision. Our team is here to answer your questions, address your concerns, and help
+                you take the next step with confidence.
+              </p>
+            </header>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="py-16 px-5">
+        <div class="container flex flex-col gap-12">
+          <header class="flex flex-col items-center text-center">
+            <span class="font-medium leading-snug text-text-secondary mb-2"
+              >FREQUENTLY ASKED QUESTIONS</span
+            >
+            <h2
+              class="relative text-heading text-2xl md:text-[32px] font-bold leading-[1.1875] tracking-[-0.2px] mb-9.5"
+            >
+              Everything You Need to Know
+              <span
+                class="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 h-1.5 w-40 rounded-full bg-brand-warmth"
+              ></span>
+            </h2>
+            <p class="max-w-147.5">
+              Below are answers to some of the most common questions families ask. If you need more
+              information, our team is always here to help.
+            </p>
+          </header>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="flex flex-col gap-4">
+              <div
+                class="bg-surface-primary [&:has(:checked)]:outline outline-border-default rounded-3xl [&:has(:checked)]:shadow-[0px_1px_4px_0px_rgba(26,26,26,0.10)] grid grid-rows-[auto_0] [&:has(:checked)]:grid-rows-[auto_1fr] group"
+              >
+                <input type="checkbox" id="faq-1" class="hidden" checked />
+                <label for="faq-1" class="p-6 flex justify-between gap-4 cursor-pointer">
+                  <h3 class="text-xl font-bold text-form-label leading-[1.2]">
+                    What services does Delight Haven assisted living provide in Randallstown?
+                  </h3>
+                  <svg
+                    width="24"
+                    height="24"
+                    class="text-icon-default group-[:has(:checked)]:rotate-180 flex-none"
+                  >
+                    <use href="/icons.svg#caret" />
+                  </svg>
+                </label>
+                <div class="overflow-hidden">
+                  <p class="px-6 pt-2 pb-4 leading-[1.55] border-t border-t-subtle/48">
+                    Our services typically includes help with daily activities such as dressing,
+                    bathing, medication management, meals, housekeeping, and social activities. At
+                    Delight Haven, we provide personalized support while encouraging independence in
+                    a comfortable home environment.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="bg-surface-primary [&:has(:checked)]:outline outline-border-default rounded-3xl [&:has(:checked)]:shadow-[0px_1px_4px_0px_rgba(26,26,26,0.10)] grid grid-rows-[auto_0] [&:has(:checked)]:grid-rows-[auto_1fr] group"
+              >
+                <input type="checkbox" id="faq-2" class="hidden" />
+                <label for="faq-2" class="p-6 flex justify-between gap-4 cursor-pointer">
+                  <h3 class="text-xl font-bold text-form-label leading-[1.2]">
+                    How much does Delight Haven assisted living cost in Randallstown, MD?
+                  </h3>
+                  <svg
+                    width="24"
+                    height="24"
+                    class="text-icon-default group-[:has(:checked)]:rotate-180 flex-none"
+                  >
+                    <use href="/icons.svg#caret" />
+                  </svg>
+                </label>
+                <div class="overflow-hidden">
+                  <p class="px-6 pt-2 pb-4 leading-[1.55] border-t border-t-subtle/48">
+                    Our services typically includes help with daily activities such as dressing,
+                    bathing, medication reminders, meals, housekeeping, and social activities. At
+                    Delight Haven, we provide personalized support while encouraging independence in
+                    a comfortable home environment.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="bg-surface-primary [&:has(:checked)]:outline outline-border-default rounded-3xl [&:has(:checked)]:shadow-[0px_1px_4px_0px_rgba(26,26,26,0.10)] grid grid-rows-[auto_0] [&:has(:checked)]:grid-rows-[auto_1fr] group"
+              >
+                <input type="checkbox" id="faq-3" class="hidden" />
+                <label for="faq-3" class="p-6 flex justify-between gap-4 cursor-pointer">
+                  <h3 class="text-xl font-bold text-form-label leading-[1.2]">
+                    Is assisted living the same as a nursing home?
+                  </h3>
+                  <svg
+                    width="24"
+                    height="24"
+                    class="text-icon-default group-[:has(:checked)]:rotate-180 flex-none"
+                  >
+                    <use href="/icons.svg#caret" />
+                  </svg>
+                </label>
+                <div class="overflow-hidden">
+                  <p class="px-6 pt-2 pb-4 leading-[1.55] border-t border-t-subtle/48">
+                    Our services typically includes help with daily activities such as dressing,
+                    bathing, medication reminders, meals, housekeeping, and social activities. At
+                    Delight Haven, we provide personalized support while encouraging independence in
+                    a comfortable home environment.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="bg-surface-primary [&:has(:checked)]:outline outline-border-default rounded-3xl [&:has(:checked)]:shadow-[0px_1px_4px_0px_rgba(26,26,26,0.10)] grid grid-rows-[auto_0] [&:has(:checked)]:grid-rows-[auto_1fr] group"
+              >
+                <input type="checkbox" id="faq-4" class="hidden" />
+                <label for="faq-4" class="p-6 flex justify-between gap-4 cursor-pointer">
+                  <h3 class="text-xl font-bold text-form-label leading-[1.2]">
+                    Can families visit residents?
+                  </h3>
+                  <svg
+                    width="24"
+                    height="24"
+                    class="text-icon-default group-[:has(:checked)]:rotate-180 flex-none"
+                  >
+                    <use href="/icons.svg#caret" />
+                  </svg>
+                </label>
+                <div class="overflow-hidden">
+                  <p class="px-6 pt-2 pb-4 leading-[1.55] border-t border-t-subtle/48">
+                    Our services typically includes help with daily activities such as dressing,
+                    bathing, medication reminders, meals, housekeeping, and social activities. At
+                    Delight Haven, we provide personalized support while encouraging independence in
+                    a comfortable home environment.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-4">
+              <div
+                class="bg-surface-primary [&:has(:checked)]:outline outline-border-default rounded-3xl [&:has(:checked)]:shadow-[0px_1px_4px_0px_rgba(26,26,26,0.10)] grid grid-rows-[auto_0] [&:has(:checked)]:grid-rows-[auto_1fr] group"
+              >
+                <input type="checkbox" id="faq-5" class="hidden" />
+                <label for="faq-5" class="p-6 flex justify-between gap-4 cursor-pointer">
+                  <h3 class="text-xl font-bold text-form-label leading-[1.2]">
+                    What is the difference between assisted living and independent living?
+                  </h3>
+                  <svg
+                    width="24"
+                    height="24"
+                    class="text-icon-default group-[:has(:checked)]:rotate-180 flex-none"
+                  >
+                    <use href="/icons.svg#caret" />
+                  </svg>
+                </label>
+                <div class="overflow-hidden">
+                  <p class="px-6 pt-2 pb-4 leading-[1.55] border-t border-t-subtle/48">
+                    Our services typically includes help with daily activities such as dressing,
+                    bathing, medication management, meals, housekeeping, and social activities. At
+                    Delight Haven, we provide personalized support while encouraging independence in
+                    a comfortable home environment.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="bg-surface-primary [&:has(:checked)]:outline outline-border-default rounded-3xl [&:has(:checked)]:shadow-[0px_1px_4px_0px_rgba(26,26,26,0.10)] grid grid-rows-[auto_0] [&:has(:checked)]:grid-rows-[auto_1fr] group"
+              >
+                <input type="checkbox" id="faq-6" class="hidden" />
+                <label for="faq-6" class="p-6 flex justify-between gap-4 cursor-pointer">
+                  <h3 class="text-xl font-bold text-form-label leading-[1.2]">
+                    How do I know if my loved one needs assisted living?
+                  </h3>
+                  <svg
+                    width="24"
+                    height="24"
+                    class="text-icon-default group-[:has(:checked)]:rotate-180 flex-none"
+                  >
+                    <use href="/icons.svg#caret" />
+                  </svg>
+                </label>
+                <div class="overflow-hidden">
+                  <p class="px-6 pt-2 pb-4 leading-[1.55] border-t border-t-subtle/48">
+                    Our services typically includes help with daily activities such as dressing,
+                    bathing, medication management, meals, housekeeping, and social activities. At
+                    Delight Haven, we provide personalized support while encouraging independence in
+                    a comfortable home environment.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="bg-surface-primary [&:has(:checked)]:outline outline-border-default rounded-3xl [&:has(:checked)]:shadow-[0px_1px_4px_0px_rgba(26,26,26,0.10)] grid grid-rows-[auto_0] [&:has(:checked)]:grid-rows-[auto_1fr] group"
+              >
+                <input type="checkbox" id="faq-7" class="hidden" />
+                <label for="faq-7" class="p-6 flex justify-between gap-4 cursor-pointer">
+                  <h3 class="text-xl font-bold text-form-label leading-[1.2]">
+                    Where is Delight Haven Assisted Living located?
+                  </h3>
+                  <svg
+                    width="24"
+                    height="24"
+                    class="text-icon-default group-[:has(:checked)]:rotate-180 flex-none"
+                  >
+                    <use href="/icons.svg#caret" />
+                  </svg>
+                </label>
+                <div class="overflow-hidden">
+                  <p class="px-6 pt-2 pb-4 leading-[1.55] border-t border-t-subtle/48">
+                    Our services typically includes help with daily activities such as dressing,
+                    bathing, medication management, meals, housekeeping, and social activities. At
+                    Delight Haven, we provide personalized support while encouraging independence in
+                    a comfortable home environment.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="bg-surface-primary [&:has(:checked)]:outline outline-border-default rounded-3xl [&:has(:checked)]:shadow-[0px_1px_4px_0px_rgba(26,26,26,0.10)] grid grid-rows-[auto_0] [&:has(:checked)]:grid-rows-[auto_1fr] group"
+              >
+                <input type="checkbox" id="faq-8" class="hidden" />
+                <label for="faq-8" class="p-6 flex justify-between gap-4 cursor-pointer">
+                  <h3 class="text-xl font-bold text-form-label leading-[1.2]">
+                    Can families visit residents?
+                  </h3>
+                  <svg
+                    width="24"
+                    height="24"
+                    class="text-icon-default group-[:has(:checked)]:rotate-180 flex-none"
+                  >
+                    <use href="/icons.svg#caret" />
+                  </svg>
+                </label>
+                <div class="overflow-hidden">
+                  <p class="px-6 pt-2 pb-4 leading-[1.55] border-t border-t-subtle/48">
+                    Our services typically includes help with daily activities such as dressing,
+                    bathing, medication management, meals, housekeeping, and social activities. At
+                    Delight Haven, we provide personalized support while encouraging independence in
+                    a comfortable home environment.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-[#091626] py-16 px-5 pb-0">
+      <div class="container text-sm md:text-base text-brand-calm flex flex-col gap-12">
+        <div
+          class="flex flex-wrap items-center md:justify-between gap-x-8 gap-y-12 *:max-w-50.5 *:md:max-w-75.25"
+        >
+          <div class="flex flex-col">
+            <a href="/" class="text-inverse">
+              <svg width="202" height="58">
+                <use href="/icons.svg#logo-full" />
+              </svg>
+            </a>
+            <p>
+              Providing compassionate, dignified care in a warm, homelike environment where every
+              resident is treated like family
+            </p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h2 class="font-bold text-inverse">Quick Links</h2>
+            <ul class="grid gap-3">
+              <li><a href="">Home</a></li>
+              <li><a href="">About Us</a></li>
+              <li><a href="">Services</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h2 class="font-bold text-inverse">Contact</h2>
+            <ul class="grid gap-3">
+              <li>
+                <a href="tel:(410) 456-0123" class="flex items-center gap-2">
+                  <svg width="20" height="20">
+                    <use href="/icons.svg#call" />
+                  </svg>
+                  <span>(410) 456-0123</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@DelightHavenliving.com" class="flex items-center gap-2">
+                  <svg width="20" height="20">
+                    <use href="/icons.svg#envelope" />
+                  </svg>
+                  <span>hello@DelightHavenliving.com</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@DelightHavenliving.com" class="flex items-center gap-2">
+                  <svg width="20" height="20">
+                    <use href="/icons.svg#location" />
+                  </svg>
+                  <span>Baltimore, Maryland, USA</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h2 class="font-bold text-inverse">Follow Us</h2>
+            <div class="flex items-stretch gap-3">
+              <a href="" class="inline-block p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#facebook" />
+                </svg>
+              </a>
+              <a href="" class="inline-block p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#linkedin" />
+                </svg>
+              </a>
+              <a href="" class="inline-block p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#instagram" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="pt-6 pb-12 border-t border-subtle/16 flex justify-center items-center gap-6">
+          <p class="text-center text-sm">
+            &copy; 2026 Delight Haven Assited Living. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

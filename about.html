@@ -45,15 +45,8 @@
         class="relative overflow-hidden bg-surface-primary grid min-h-screen py-38.5 isolate px-5"
       >
         <div class="container flex items-center">
-          <div class="grid grid-cols-[0.48fr_0.52fr] items-stretch gap-16">
-            <svg
-              width="562"
-              height="535"
-              viewBox="0 0 562 535"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-            >
+          <div class="grid md:grid-cols-[0.48fr_0.52fr] items-stretch gap-16">
+            <svg viewBox="0 0 562 535" fill="none" class="w-full h-auto">
               <path
                 d="M457.069 482.602C461.521 471.568 470.415 466.362 479.622 461.531C491.113 455.5 503.091 450.051 507.521 434.577"
                 stroke="#1B3F6A"
@@ -183,42 +176,60 @@
               </p>
             </header>
 
-            <div class="col-span-2 grid grid-cols-4 gap-4">
+            <div
+              class="md:col-span-2 grid grid-cols-[repeat(auto-fit,minmax(min(185px,100%),1fr))] gap-4"
+            >
               <article
-                class="flex flex-col items-center text-center gap-2 p-6 bg-surface-secondary rounded-3xl shadow-[0px_1px_4px_0px_rgba(27,63,106,0.12)]"
+                class="flex flex-col items-center text-center gap-2 p-4 md:p-6 bg-surface-secondary rounded-3xl shadow-[0px_1px_4px_0px_rgba(27,63,106,0.12)]"
               >
                 <svg width="40" height="40">
                   <use href="/icons.svg#people" />
                 </svg>
-                <h3 class="text-[32px] font-bold leading-[1.1875] tracking-[-0.2px]">500+</h3>
-                <p class="text-text-secondary leading-normal text-base">Families Trusted</p>
+                <h3 class="text-2xl md:text-[32px] font-bold leading-[1.1875] tracking-[-0.2px]">
+                  500+
+                </h3>
+                <p class="text-text-secondary leading-normal text-sm md:text-base">
+                  Families Trusted
+                </p>
               </article>
               <article
-                class="flex flex-col items-center text-center gap-2 p-6 bg-surface-secondary rounded-3xl shadow-[0px_1px_4px_0px_rgba(27,63,106,0.12)]"
+                class="flex flex-col items-center text-center gap-2 p-4 md:p-6 bg-surface-secondary rounded-3xl shadow-[0px_1px_4px_0px_rgba(27,63,106,0.12)]"
               >
                 <svg width="40" height="40">
                   <use href="/icons.svg#smiley" />
                 </svg>
-                <h3 class="text-[32px] font-bold leading-[1.1875] tracking-[-0.2px]">100%</h3>
-                <p class="text-text-secondary leading-normal text-base">Satisfaction Rate</p>
+                <h3 class="text-2xl md:text-[32px] font-bold leading-[1.1875] tracking-[-0.2px]">
+                  100%
+                </h3>
+                <p class="text-text-secondary leading-normal text-sm md:text-base">
+                  Satisfaction Rate
+                </p>
               </article>
               <article
-                class="flex flex-col items-center text-center gap-2 p-6 bg-surface-secondary rounded-3xl shadow-[0px_1px_4px_0px_rgba(27,63,106,0.12)]"
+                class="flex flex-col items-center text-center gap-2 p-4 md:p-6 bg-surface-secondary rounded-3xl shadow-[0px_1px_4px_0px_rgba(27,63,106,0.12)]"
               >
                 <svg width="40" height="40">
-                  <use href="/icons.svg#smiley" />
+                  <use href="/icons.svg#star" />
                 </svg>
-                <h3 class="text-[32px] font-bold leading-[1.1875] tracking-[-0.2px]">500+</h3>
-                <p class="text-text-secondary leading-normal text-base">Excellent Reviews</p>
+                <h3 class="text-2xl md:text-[32px] font-bold leading-[1.1875] tracking-[-0.2px]">
+                  500+
+                </h3>
+                <p class="text-text-secondary leading-normal text-sm md:text-base">
+                  Excellent Reviews
+                </p>
               </article>
               <article
-                class="flex flex-col items-center text-center gap-2 p-6 bg-surface-secondary rounded-3xl shadow-[0px_1px_4px_0px_rgba(27,63,106,0.12)]"
+                class="flex flex-col items-center text-center gap-2 p-4 md:p-6 bg-surface-secondary rounded-3xl shadow-[0px_1px_4px_0px_rgba(27,63,106,0.12)]"
               >
                 <svg width="40" height="40">
                   <use href="/icons.svg#doctor" />
                 </svg>
-                <h3 class="text-[32px] font-bold leading-[1.1875] tracking-[-0.2px]">100+</h3>
-                <p class="text-text-secondary leading-normal text-base">Seasoned Health Workers</p>
+                <h3 class="text-2xl md:text-[32px] font-bold leading-[1.1875] tracking-[-0.2px]">
+                  100+
+                </h3>
+                <p class="text-text-secondary leading-normal text-sm md:text-base">
+                  Seasoned Health Workers
+                </p>
               </article>
             </div>
           </div>
@@ -301,7 +312,7 @@
             </p>
           </header>
           <div
-            class="grid md:grid-cols-[0.5fr_1fr] grid-rows-[400px_600px_600px] gap-6 items-stretch w-full *:w-full"
+            class="grid md:grid-cols-[0.5fr_1fr] md:grid-rows-[400px_600px_600px] gap-6 items-stretch w-full *:w-full"
           >
             <img
               src="/images/woman-helping-aged-man-carry-groceries.webp"
@@ -319,7 +330,7 @@
               src="/images/young-woman-talking-with-aged-people.webp"
               alt="young woman talking with aged man"
               loading="lazy"
-              class="rounded-4xl object-center object-cover col-span-2"
+              class="rounded-4xl object-center object-cover md:col-span-2"
             />
             <img
               src="/images/young-woman-helping-old-man-with-tool.webp"
@@ -338,7 +349,7 @@
       </section>
 
       <section id="manager" class="py-16 px-5 bg-brand-trust">
-        <div class="container flex items-center gap-16 text-inverse">
+        <div class="container flex flex-col md:flex-row items-center gap-16 text-inverse">
           <div class="flex flex-col items-center gap-6">
             <img
               src="/images/feyisayo-olajide.webp"
@@ -352,11 +363,11 @@
             </div>
           </div>
           <header class="flex flex-col items-start max-w-xl">
-            <span class="font-medium leading-snug text-text-secondary mb-2 text-sm md:text-base"
+            <span class="font-medium leading-snug text-text-tertiary mb-2 text-sm md:text-base"
               >LEADERSHIP</span
             >
             <h1
-              class="relative text-inverse text-[40px] md:text-5xl font-bold leading-[1.1875] tracking-[-0.2px] mb-9.5"
+              class="relative text-inverse text-2xl md:text-[40px] md:text-5xl font-bold leading-[1.1875] tracking-[-0.2px] mb-9.5"
             >
               Meet Our Manager
               <span
