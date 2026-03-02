@@ -19,6 +19,43 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --spring-easing: linear(
+    0,
+    0.002,
+    0.009 1%,
+    0.035,
+    0.078,
+    0.141 4.4%,
+    0.281 6.7%,
+    0.723 12.9%,
+    0.842,
+    0.938,
+    1.017,
+    1.077,
+    1.121 22.3%,
+    1.137,
+    1.149 24.3%,
+    1.159,
+    1.163,
+    1.161,
+    1.154,
+    1.143,
+    1.129 32.8%,
+    1.051 39.6%,
+    1.017 43.1%,
+    1.002,
+    0.991,
+    0.982 48.9%,
+    0.977 51%,
+    0.974 53.8%,
+    0.975 57.1%,
+    0.997 69.8%,
+    1.003 76.9%,
+    1.004 83.8%,
+    1
+  );
+  --spring-duration: 1.333s;
 }
 
 @theme {
@@ -39,6 +76,9 @@
 
   --color-text-secondary: #5a6a7a;
   --color-text-tertiary: #8a9baa;
+
+  --ease-spring: var(--spring-easing);
+  --duration-spring: var(--spring-duration);
 
   --background-image-nav-dark: linear-gradient(
     180deg,
