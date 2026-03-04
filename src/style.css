@@ -77,6 +77,9 @@
   --color-text-secondary: #5a6a7a;
   --color-text-tertiary: #8a9baa;
 
+  --color-surface-disabled: #f0ede8;
+  --color-icon-disabled: #c8c0b8;
+
   --ease-spring: var(--spring-easing);
   --duration-spring: var(--spring-duration);
 
@@ -107,6 +110,33 @@
   .container {
     @apply max-w-310 mx-auto;
   }
+
+  .heading-underline,
+  .heading-underline-center {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: calc(100% + 8px);
+      height: 6px;
+      width: 160px;
+      border-radius: 9999px;
+      background-color: var(--color-brand-warmth);
+    }
+  }
+
+  .heading-underline::before {
+    left: 0;
+  }
+
+  .heading-underline-center::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .swiper-button-disabled {
+    @apply bg-surface-disabled! text-icon-disabled! cursor-not-allowed pointer-events-none;
+  }
 }
 
 @layer base {
@@ -119,5 +149,9 @@
   a {
     font-family: inherit;
     font-size: inherit;
+  }
+
+  button {
+    cursor: pointer;
   }
 }
