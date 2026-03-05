@@ -19,13 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
     touchMultiplier: 2,
   });
 
-  function raf(time: number) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-
-  // Sync Lenis with ScrollTrigger
+  // Sync Lenis with ScrollTrigger via GSAP ticker (single RAF driver — no double tick)
   lenis.on("scroll", ScrollTrigger.update);
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
@@ -41,6 +35,64 @@ window.addEventListener("DOMContentLoaded", () => {
       prevEl: ".testimonials-prev",
     },
   });
+
+  // --- About Hero: CSS Clip-Path Diagonal Reveal + Infinite Wave Draw ---
+  const aboutHeroWrap = document.querySelector<HTMLElement>("#about-hero-svg-wrap");
+
+  if (aboutHeroWrap) {
+    // Same diagonal wipe as the approach section
+    gsap.fromTo(
+      aboutHeroWrap,
+      { clipPath: "polygon(0% 0%, 0% 0%, -100% 100%, -100% 100%)" },
+      {
+        clipPath: "polygon(0% 0%, 200% 0%, 100% 100%, 0% 100%)",
+        duration: 3,
+        ease: "power3.inOut",
+        scrollTrigger: {
+          trigger: aboutHeroWrap,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+
+    // Infinite wave-draw on the grouped decorative paths
+    // READ all lengths first (single layout pass), THEN write via gsap
+    const aboutWavyGroups = aboutHeroWrap.querySelectorAll<SVGGElement>(".wavy-path-group");
+    const aboutWavyData: {
+      path: SVGPathElement;
+      len: number;
+      from: number;
+      to: number;
+      delay: number;
+    }[] = [];
+    aboutWavyGroups.forEach((pathGroup, i) => {
+      const paths = [...pathGroup.children] as SVGPathElement[];
+      paths.forEach((path, j) => {
+        const len = Math.ceil(path.getTotalLength() + 10);
+        const isLastPath = j === paths.length - 1;
+        aboutWavyData.push({
+          path,
+          len,
+          from: isLastPath ? len : -len,
+          to: isLastPath ? -len : len,
+          delay: j * 0.25 + i * 0.25,
+        });
+      });
+    });
+    // Write phase
+    aboutWavyData.forEach(({ path, len, from, to, delay }) => {
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: from });
+      gsap.to(path, {
+        strokeDashoffset: to,
+        duration: 1.5,
+        repeat: -1,
+        ease: "power2.inOut",
+        delay,
+        repeatDelay: 0.5,
+      });
+    });
+  }
 
   // --- Services Hero: Stacked Image Reveal ---
   const servicesHeroGroup = document.querySelector<HTMLElement>("#services-hero-group");
@@ -88,37 +140,40 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Hero Section Animations ---
-  const heroTl = gsap.timeline({
-    defaults: { ease: "power3.out", duration: 1.2 },
-  });
+  const heroSection = document.querySelector("#hero");
+  if (heroSection) {
+    const heroTl = gsap.timeline({
+      defaults: { ease: "power3.out", duration: 1.2 },
+    });
 
-  heroTl
-    .from("#hero img:not(#services-hero-group img)", {
-      scale: 1.4,
-      duration: 3,
-      delay: 0.25,
-      ease: "expo.out",
-    })
-    .from(
-      "#hero .max-w-190 > div:first-child, #hero h1, #hero p",
-      {
-        y: 60,
-        opacity: 0,
-        stagger: 0.25,
-      },
-      "-=2.5",
-    )
-    .from(
-      "#hero .mt-5 a",
-      {
-        scale: 0.75,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "back.out(1.3)",
-      },
-      "-=1.75",
-    );
+    heroTl
+      .from("#hero img:not(#services-hero-group img)", {
+        scale: 1.4,
+        duration: 3,
+        delay: 0.25,
+        ease: "expo.out",
+      })
+      .from(
+        "#hero .max-w-190 > div:first-child, #hero h1, #hero p",
+        {
+          y: 60,
+          opacity: 0,
+          stagger: 0.25,
+        },
+        "-=2.5",
+      )
+      .from(
+        "#hero .mt-5 a",
+        {
+          scale: 0.75,
+          opacity: 0,
+          stagger: 0.2,
+          duration: 0.8,
+          ease: "back.out(1.3)",
+        },
+        "-=1.75",
+      );
+  }
 
   // --- Why Section Animations ---
   const whySection = document.querySelector("#why");
@@ -149,20 +204,19 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     // 3. Bulb rays animate path length (infinite loop)
+    // READ all lengths first, THEN write
     const rays = document.querySelectorAll("#bulb-rays path");
-    rays.forEach((ray) => {
-      const length = (ray as SVGPathElement).getTotalLength();
-      // Set initial state: stroke visible but using dash to hide it potentially?
-      // Actually, user wants them to animate path length.
-      gsap.set(ray, { strokeDasharray: length, strokeDashoffset: length });
-      gsap.to(ray, {
-        strokeDashoffset: 0,
-        duration: 0.5,
-        repeat: -1,
-        ease: "sine.inOut",
+    if (rays.length) {
+      const rayData = Array.from(rays).map((ray) => ({
+        ray: ray as SVGPathElement,
+        length: (ray as SVGPathElement).getTotalLength(),
         delay: Math.random() * 0.5,
+      }));
+      rayData.forEach(({ ray, length, delay }) => {
+        gsap.set(ray, { strokeDasharray: length, strokeDashoffset: length });
+        gsap.to(ray, { strokeDashoffset: 0, duration: 0.5, repeat: -1, ease: "sine.inOut", delay });
       });
-    });
+    }
 
     // 4. Second SVG: Spine path length animation (via mask)
     const spineDrawPath = document.querySelector("#spine-draw-path") as SVGPathElement;
@@ -224,24 +278,39 @@ window.addEventListener("DOMContentLoaded", () => {
       },
     );
 
-    // Infinite wave-draw: cycle strokeDashoffset on every wavy path so they flow continuously
+    // Infinite wave-draw: cycle strokeDashoffset — READ all lengths before any writes
     const wavyPathGroups = approachSvg.querySelectorAll<SVGGElement>(".wavy-path-group");
+    const wavyData: {
+      path: SVGPathElement;
+      len: number;
+      from: number;
+      to: number;
+      delay: number;
+    }[] = [];
     wavyPathGroups.forEach((pathGroup, i) => {
       const paths = [...pathGroup.children] as SVGPathElement[];
       paths.forEach((path, j) => {
         const len = Math.ceil(path.getTotalLength() + 10);
         const isLastPath = j === paths.length - 1;
-        const from = isLastPath ? len : -len;
-        const to = isLastPath ? -len : len;
-        gsap.set(path, { strokeDasharray: len, strokeDashoffset: from });
-        gsap.to(path, {
-          strokeDashoffset: to,
-          duration: 1.5,
-          repeat: -1,
-          ease: "power2.inOut",
+        wavyData.push({
+          path,
+          len,
+          from: isLastPath ? len : -len,
+          to: isLastPath ? -len : len,
           delay: j * 0.25 + i * 0.25,
-          repeatDelay: 0.5,
         });
+      });
+    });
+    // Write phase
+    wavyData.forEach(({ path, len, from, to, delay }) => {
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: from });
+      gsap.to(path, {
+        strokeDashoffset: to,
+        duration: 1.5,
+        repeat: -1,
+        ease: "power2.inOut",
+        delay,
+        repeatDelay: 0.5,
       });
     });
   }
@@ -284,20 +353,27 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- Magnetic Buttons ---
+  // Cache rect on mouseenter — NOT on every mousemove — to avoid forced reflow.
+  // getBoundingClientRect() after a GSAP transform write triggers a layout flush;
+  // reading it once on enter and reusing it is both correct and perf-friendly.
   const magneticButtons = document.querySelectorAll<HTMLElement>(".magnetic-btn");
   magneticButtons.forEach((btn) => {
-    btn.addEventListener("mousemove", (e) => {
-      const rect = btn.getBoundingClientRect();
-      const h = rect.height / 2;
-      const w = rect.width / 2;
-      const x = (e.clientX - rect.left - w) * 0.3; // 0.3 controls the magnet strength
-      const y = (e.clientY - rect.top - h) * 0.3;
+    let cachedRect: DOMRect | null = null;
 
-      gsap.to(btn, { x: x, y: y, duration: 0.4, ease: "power2.out" });
+    btn.addEventListener("mouseenter", () => {
+      cachedRect = btn.getBoundingClientRect();
+    });
+
+    btn.addEventListener("mousemove", (e) => {
+      if (!cachedRect) return;
+      const x = (e.clientX - cachedRect.left - cachedRect.width / 2) * 0.3;
+      const y = (e.clientY - cachedRect.top - cachedRect.height / 2) * 0.3;
+      gsap.to(btn, { x, y, duration: 0.4, ease: "power2.out" });
     });
 
     btn.addEventListener("mouseleave", () => {
-      gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+      cachedRect = null;
+      gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "expo.out" });
     });
   });
 });
