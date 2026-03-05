@@ -140,39 +140,37 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Hero Section Animations ---
+  // Guard each individual tween target, not just #hero — pages like blog.html
+  // have a #hero section but no hero img or .mt-5 CTA buttons.
   const heroSection = document.querySelector("#hero");
   if (heroSection) {
+    const heroImgs = heroSection.querySelectorAll<HTMLElement>("img:not(#services-hero-group img)");
+    const heroTextEls = heroSection.querySelectorAll<HTMLElement>(
+      ".max-w-190 > div:first-child, h1, p",
+    );
+    const heroCTAs = heroSection.querySelectorAll<HTMLElement>(".mt-5 a");
+
     const heroTl = gsap.timeline({
       defaults: { ease: "power3.out", duration: 1.2 },
     });
 
-    heroTl
-      .from("#hero img:not(#services-hero-group img)", {
-        scale: 1.4,
-        duration: 3,
-        delay: 0.25,
-        ease: "expo.out",
-      })
-      .from(
-        "#hero .max-w-190 > div:first-child, #hero h1, #hero p",
-        {
-          y: 60,
-          opacity: 0,
-          stagger: 0.25,
-        },
-        "-=2.5",
-      )
-      .from(
-        "#hero .mt-5 a",
-        {
-          scale: 0.75,
-          opacity: 0,
-          stagger: 0.2,
-          duration: 0.8,
-          ease: "back.out(1.3)",
-        },
+    if (heroImgs.length) {
+      heroTl.from(heroImgs, { scale: 1.4, duration: 3, delay: 0.25, ease: "expo.out" });
+    }
+    if (heroTextEls.length) {
+      heroTl.from(
+        heroTextEls,
+        { y: 60, opacity: 0, stagger: 0.25 },
+        heroImgs.length ? "-=2.5" : "0",
+      );
+    }
+    if (heroCTAs.length) {
+      heroTl.from(
+        heroCTAs,
+        { scale: 0.75, opacity: 0, stagger: 0.2, duration: 0.8, ease: "back.out(1.3)" },
         "-=1.75",
       );
+    }
   }
 
   // --- Why Section Animations ---
@@ -316,40 +314,37 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Section Header Split-Word Animations with SplitType ---
-  const sectionHeaders = document.querySelectorAll<HTMLElement>("section h2");
-  sectionHeaders.forEach((h2) => {
-    // Preserve any existing children like the animated underline span
-    const underlineSpan = h2.querySelector("span.absolute");
+  // Selector targets h2s inside <header> elements only — this excludes blog card
+  // titles, footer headings, and any other h2s that are not section headings.
+  // Deferred via rAF so SplitType's internal getBoundingClientRect reads happen
+  // after first paint, avoiding a forced reflow at page load.
+  requestAnimationFrame(() => {
+    const sectionHeaders = document.querySelectorAll<HTMLElement>("section header h2");
 
-    // Apply SplitType directly
-    // Note: SplitType wraps text in words and lines, but if there's inline HTML elements,
-    // we need to be careful. The easiest is to extract the text, split it, and re-append the underline.
-    // To cleanly separate the underline, we'll temporarily remove it
-    if (underlineSpan) {
-      h2.removeChild(underlineSpan);
-    }
+    sectionHeaders.forEach((h2) => {
+      // Temporarily detach the decorative underline span so SplitType doesn't wrap it
+      const underlineSpan = h2.querySelector("span.absolute");
+      if (underlineSpan) h2.removeChild(underlineSpan);
 
-    const text = new SplitType(h2, { types: "words,chars" });
+      const text = new SplitType(h2, { types: "words" });
 
-    // Re-append the underline if it existed
-    if (underlineSpan) {
-      h2.appendChild(underlineSpan);
-    }
+      if (underlineSpan) h2.appendChild(underlineSpan);
 
-    if (text.words) {
-      gsap.from(text.words, {
-        y: "100%",
-        opacity: 0,
-        duration: 1,
-        stagger: 0.05,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: h2,
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
-    }
+      if (text.words?.length) {
+        gsap.from(text.words, {
+          y: "100%",
+          opacity: 0,
+          duration: 1,
+          stagger: 0.05,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: h2,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+    });
   });
 
   // --- Magnetic Buttons ---
