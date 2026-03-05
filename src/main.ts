@@ -5,6 +5,8 @@ import "swiper/css/bundle";
 import Lenis from "lenis";
 import SplitType from "split-type";
 
+import intlTelInput from "intl-tel-input";
+
 gsap.registerPlugin(ScrollTrigger);
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -371,4 +373,17 @@ window.addEventListener("DOMContentLoaded", () => {
       gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "expo.out" });
     });
   });
+
+  const phoneInput = document.querySelector<HTMLInputElement>("#phone");
+  const visitDateInput = document.querySelector<HTMLInputElement>("#visit-date");
+
+  if (phoneInput) {
+    intlTelInput(phoneInput, {
+      loadUtils: () => import("intl-tel-input/utils"),
+    });
+  }
+
+  if (visitDateInput) {
+    visitDateInput.min = new Date().toISOString().split("T")[0];
+  }
 });
