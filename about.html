@@ -255,36 +255,66 @@
               individual.
             </p>
           </header>
-          <div class="grid md:grid-cols-2 items-stretch w-full">
+          <div id="purpose-grid" class="relative grid md:grid-cols-2 items-stretch w-full">
+            <!-- Roving highlight indicator -->
+            <div
+              id="purpose-indicator"
+              aria-hidden="true"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 0;
+                pointer-events: none;
+                background-color: color-mix(in srgb, #b8d3e8 24%, transparent);
+                transition:
+                  top 0.5s cubic-bezier(0.26, 0, 0, 0.98),
+                  left 0.5s cubic-bezier(0.26, 0, 0, 0.98),
+                  width 0.5s cubic-bezier(0.26, 0, 0, 0.98),
+                  height 0.5s cubic-bezier(0.26, 0, 0, 0.98);
+                z-index: 0;
+              "
+            ></div>
+
             <article
-              class="relative p-6 bg-brand-calm/24 border-r border-subtle flex flex-col items-start gap-4"
+              id="purpose-card-0"
+              class="purpose-card group relative p-6 border-r border-subtle flex flex-col items-start gap-4"
             >
               <span
-                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-trust rounded-tr-2xl rounded-br-2xl"
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 rounded-tr-2xl rounded-br-2xl transition-colors duration-300 bg-brand-warmth group-hover:bg-brand-trust"
               ></span>
-              <div class="p-2 rounded-2xl bg-surface-primary">
+              <div
+                class="p-2 rounded-2xl transition-colors duration-300 bg-brand-calm/16 group-hover:bg-surface-primary"
+              >
                 <svg width="24" height="24">
                   <use href="/icons.svg#target" />
                 </svg>
               </div>
-              <h3 class="text-2xl font-bold text-heading">Our Mission</h3>
-              <p>
+              <h3 class="text-2xl font-bold text-heading relative z-10">Our Mission</h3>
+              <p class="relative z-10">
                 To provide compassionate assisted living in Randallstown that supports dignity,
                 independence, safety, and overall well-being in a warm and respectful home
                 environment.
               </p>
             </article>
-            <article class="relative p-6 border-subtle flex flex-col items-start gap-4">
+
+            <article
+              id="purpose-card-1"
+              class="purpose-card group relative p-6 flex flex-col items-start gap-4"
+            >
               <span
-                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-warmth rounded-tr-2xl rounded-br-2xl"
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 rounded-tr-2xl rounded-br-2xl transition-colors duration-300 bg-brand-warmth group-hover:bg-brand-trust"
               ></span>
-              <div class="p-2 rounded-2xl bg-brand-calm/16">
+              <div
+                class="p-2 rounded-2xl transition-colors duration-300 bg-brand-calm/16 group-hover:bg-surface-primary"
+              >
                 <svg width="24" height="24">
                   <use href="/icons.svg#telescope" />
                 </svg>
               </div>
-              <h3 class="text-2xl font-bold text-heading">Our Vision</h3>
-              <p>
+              <h3 class="text-2xl font-bold text-heading relative z-10">Our Vision</h3>
+              <p class="relative z-10">
                 To be a trusted home where seniors feel secure, families feel confident, and
                 meaningful relationships grow every day.
               </p>
@@ -532,5 +562,56 @@
       </div>
     </footer>
     <script type="module" src="/src/main.ts"></script>
+    <script>
+      (function () {
+        const grid = document.getElementById("purpose-grid");
+        const indicator = document.getElementById("purpose-indicator");
+        const cards = grid.querySelectorAll(".purpose-card");
+
+        function moveIndicator(card) {
+          indicator.style.top = card.offsetTop + "px";
+          indicator.style.left = card.offsetLeft + "px";
+          indicator.style.width = card.offsetWidth + "px";
+          indicator.style.height = card.offsetHeight + "px";
+        }
+
+        // Snap to first card on load — no transition for initial placement
+        indicator.style.transition = "none";
+        moveIndicator(cards[0]);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            indicator.style.transition =
+              "top 0.5s cubic-bezier(.26,0,0,.98), " +
+              "left 0.5s cubic-bezier(.26,0,0,.98), " +
+              "width 0.5s cubic-bezier(.26,0,0,.98), " +
+              "height 0.5s cubic-bezier(.26,0,0,.98)";
+          });
+        });
+
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", () => moveIndicator(card));
+        });
+
+        // Recalculate on resize
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            indicator.style.transition = "none";
+            const hovered = Array.from(cards).find((c) => c.matches(":hover")) || cards[0];
+            moveIndicator(hovered);
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                indicator.style.transition =
+                  "top 0.5s cubic-bezier(.26,0,0,.98), " +
+                  "left 0.5s cubic-bezier(.26,0,0,.98), " +
+                  "width 0.5s cubic-bezier(.26,0,0,.98), " +
+                  "height 0.5s cubic-bezier(.26,0,0,.98)";
+              });
+            });
+          }, 100);
+        });
+      })();
+    </script>
   </body>
 </html>

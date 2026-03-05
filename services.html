@@ -65,22 +65,22 @@
                 a warm, homelike setting.
               </p>
             </header>
-            <div class="relative">
+            <div id="services-hero-group" class="relative">
               <img
                 fetchpriority="high"
-                class="aspect-square w-[clamp(280px,25vw,396px)] rounded-3xl object-cover object-center"
+                class="relative z-10 aspect-square w-[clamp(280px,25vw,396px)] rounded-3xl object-cover object-center"
                 alt="old and young woman smiling exchanging gifts"
                 src="/images/old-and-young-woman-smiling-exchanging-gifts.webp"
               />
               <img
                 fetchpriority="high"
-                class="aspect-square w-[clamp(184px,18vw,300px)] rounded-3xl absolute top-1/2 -translate-y-1/2 -translate-x-full -left-5 object-cover object-center"
+                class="aspect-square w-[clamp(184px,18vw,300px)] rounded-3xl absolute top-1/2 -left-5 object-cover object-center"
                 alt="young woman assiting aged man while walking and smiling"
                 src="/images/young-woman-assiting-aged-man-while-walking-and-smiling.webp"
               />
               <img
                 fetchpriority="high"
-                class="aspect-square w-[clamp(184px,18vw,300px)] rounded-3xl absolute top-1/2 -translate-y-1/2 translate-x-full -right-5 object-cover object-center"
+                class="aspect-square w-[clamp(184px,18vw,300px)] rounded-3xl absolute top-1/2 -right-5 object-cover object-center"
                 alt="nurse talking with an aged woman"
                 src="/images/nurse-talking-with-an-aged-woman.webp"
               />
@@ -104,22 +104,46 @@
               enhancing the quality of life for every resident
             </p>
           </header>
-          <div class="grid md:grid-cols-2 items-stretch w-full">
+          <div id="services-grid" class="relative grid md:grid-cols-2 items-stretch w-full">
+            <!-- Roving highlight indicator -->
+            <div
+              id="services-indicator"
+              aria-hidden="true"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 0;
+                pointer-events: none;
+                background-color: color-mix(in srgb, #b8d3e8 24%, transparent);
+                transition:
+                  top 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                z-index: 0;
+              "
+            ></div>
+
             <article
-              class="relative md:col-span-2 p-6 bg-brand-calm/24 border-b border-subtle flex flex-col items-start gap-4"
+              id="service-card-0"
+              class="service-card group relative md:col-span-2 p-6 border-b border-subtle flex flex-col items-start gap-4"
             >
               <span
-                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-trust rounded-tr-2xl rounded-br-2xl"
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 rounded-tr-2xl rounded-br-2xl transition-colors duration-300 bg-brand-warmth group-hover:bg-brand-trust"
               ></span>
-              <div class="p-2 rounded-2xl bg-surface-primary">
+              <div
+                class="p-2 rounded-2xl transition-colors duration-300 bg-brand-calm/16 group-hover:bg-surface-primary"
+              >
                 <svg width="24" height="24">
                   <use href="/icons.svg#agreement" />
                 </svg>
               </div>
-              <h3 class="text-2xl font-bold text-heading">
+              <h3 class="text-2xl font-bold text-heading relative z-10">
                 Personalized Assisted Living Services in Randallstown
               </h3>
-              <div class="flex flex-col gap-10">
+              <div class="flex flex-col gap-10 relative z-10">
                 <span
                   >Our assisted living services are designed to help residents with daily routines
                   while encouraging independence and confidence.</span
@@ -142,21 +166,25 @@
                 </p>
               </div>
             </article>
+
             <article
-              class="relative p-6 border-r border-b border-subtle flex flex-col items-start gap-4"
+              id="service-card-1"
+              class="service-card group relative p-6 border-r border-b border-subtle flex flex-col items-start gap-4"
             >
               <span
-                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-warmth rounded-tr-2xl rounded-br-2xl"
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 rounded-tr-2xl rounded-br-2xl transition-colors duration-300 bg-brand-warmth group-hover:bg-brand-trust"
               ></span>
-              <div class="p-2 rounded-2xl bg-brand-calm/16">
+              <div
+                class="p-2 rounded-2xl transition-colors duration-300 bg-brand-calm/16 group-hover:bg-surface-primary"
+              >
                 <svg width="24" height="24">
                   <use href="/icons.svg#home" />
                 </svg>
               </div>
-              <h3 class="text-2xl font-bold text-heading">
+              <h3 class="text-2xl font-bold text-heading relative z-10">
                 Comfortable Senior Living Near Paxton Road
               </h3>
-              <div class="flex flex-col gap-10">
+              <div class="flex flex-col gap-10 relative z-10">
                 <span
                   >Our assisted living home near Paxton Road in Randallstown is designed for safety
                   and comfort. Features include:</span
@@ -171,17 +199,25 @@
                 <p>Every space is arranged to help residents feel settled and secure.</p>
               </div>
             </article>
-            <article class="relative p-6 border-b border-subtle flex flex-col items-start gap-4">
+
+            <article
+              id="service-card-2"
+              class="service-card group relative p-6 border-b border-subtle flex flex-col items-start gap-4"
+            >
               <span
-                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-warmth rounded-tr-2xl rounded-br-2xl"
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 rounded-tr-2xl rounded-br-2xl transition-colors duration-300 bg-brand-warmth group-hover:bg-brand-trust"
               ></span>
-              <div class="p-2 rounded-2xl bg-brand-calm/16">
+              <div
+                class="p-2 rounded-2xl transition-colors duration-300 bg-brand-calm/16 group-hover:bg-surface-primary"
+              >
                 <svg width="24" height="24">
                   <use href="/icons.svg#security-check" />
                 </svg>
               </div>
-              <h3 class="text-2xl font-bold text-heading">Safety and Professional Support</h3>
-              <div class="flex flex-col gap-10">
+              <h3 class="text-2xl font-bold text-heading relative z-10">
+                Safety and Professional Support
+              </h3>
+              <div class="flex flex-col gap-10 relative z-10">
                 <span
                   >Safety is a top priority at our assisted living home in Randallstown. Our trained
                   staff provide attentive supervision and responsive support in a secure setting.
@@ -191,17 +227,25 @@
                 >
               </div>
             </article>
-            <article class="relative p-6 border-r border-subtle flex flex-col items-start gap-4">
+
+            <article
+              id="service-card-3"
+              class="service-card group relative p-6 border-r border-subtle flex flex-col items-start gap-4"
+            >
               <span
-                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-warmth rounded-tr-2xl rounded-br-2xl"
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 rounded-tr-2xl rounded-br-2xl transition-colors duration-300 bg-brand-warmth group-hover:bg-brand-trust"
               ></span>
-              <div class="p-2 rounded-2xl bg-brand-calm/16">
+              <div
+                class="p-2 rounded-2xl transition-colors duration-300 bg-brand-calm/16 group-hover:bg-surface-primary"
+              >
                 <svg width="24" height="24">
                   <use href="/icons.svg#idea" />
                 </svg>
               </div>
-              <h3 class="text-2xl font-bold text-heading">Activities and Social Engagement</h3>
-              <div class="flex flex-col gap-10">
+              <h3 class="text-2xl font-bold text-heading relative z-10">
+                Activities and Social Engagement
+              </h3>
+              <div class="flex flex-col gap-10 relative z-10">
                 <span>We encourage connection and meaningful daily experiences through:</span>
 
                 <ul class="list-disc pl-6">
@@ -213,17 +257,23 @@
                 <p>Residents participate at their own pace in a supportive environment.</p>
               </div>
             </article>
-            <article class="relative p-6 flex flex-col items-start gap-4">
+
+            <article
+              id="service-card-4"
+              class="service-card group relative p-6 flex flex-col items-start gap-4"
+            >
               <span
-                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 bg-brand-warmth rounded-tr-2xl rounded-br-2xl"
+                class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-10 rounded-tr-2xl rounded-br-2xl transition-colors duration-300 bg-brand-warmth group-hover:bg-brand-trust"
               ></span>
-              <div class="p-2 rounded-2xl bg-brand-calm/16">
+              <div
+                class="p-2 rounded-2xl transition-colors duration-300 bg-brand-calm/16 group-hover:bg-surface-primary"
+              >
                 <svg width="24" height="24">
                   <use href="/icons.svg#kitchen-utensils" />
                 </svg>
               </div>
-              <h3 class="text-2xl font-bold text-heading">Nutrition and Wellness</h3>
-              <div class="flex flex-col gap-10">
+              <h3 class="text-2xl font-bold text-heading relative z-10">Nutrition and Wellness</h3>
+              <div class="flex flex-col gap-10 relative z-10">
                 <span
                   >Healthy meals play an important role in senior living. At our Randallstown
                   assisted living home, residents enjoy:</span
@@ -418,5 +468,56 @@
       </div>
     </footer>
     <script type="module" src="/src/main.ts"></script>
+    <script>
+      (function () {
+        const grid = document.getElementById("services-grid");
+        const indicator = document.getElementById("services-indicator");
+        const cards = grid.querySelectorAll(".service-card");
+
+        function moveIndicator(card) {
+          indicator.style.top = card.offsetTop + "px";
+          indicator.style.left = card.offsetLeft + "px";
+          indicator.style.width = card.offsetWidth + "px";
+          indicator.style.height = card.offsetHeight + "px";
+        }
+
+        // Snap to first card on load — no transition for initial placement
+        indicator.style.transition = "none";
+        moveIndicator(cards[0]);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            indicator.style.transition =
+              "top 0.5s cubic-bezier(.26,0,0,.98), " +
+              "left 0.5s cubic-bezier(.26,0,0,.98), " +
+              "width 0.5s cubic-bezier(.26,0,0,.98), " +
+              "height 0.5s cubic-bezier(.26,0,0,.98)";
+          });
+        });
+
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", () => moveIndicator(card));
+        });
+
+        // Recalculate on resize (grid reflow changes offset values)
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            indicator.style.transition = "none";
+            const hovered = Array.from(cards).find((c) => c.matches(":hover")) || cards[0];
+            moveIndicator(hovered);
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                indicator.style.transition =
+                  "top 0.5s cubic-bezier(.26,0,0,.98), " +
+                  "left 0.5s cubic-bezier(.26,0,0,.98), " +
+                  "width 0.5s cubic-bezier(.26,0,0,.98), " +
+                  "height 0.5s cubic-bezier(.26,0,0,.98)";
+              });
+            });
+          }, 100);
+        });
+      })();
+    </script>
   </body>
 </html>
