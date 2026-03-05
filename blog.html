@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Delight Haven</title>
+  </head>
+  <body class="bg-canvas">
+    <header class="p-5 backdrop-blur-xs bg-nav-light fixed top-0 left-0 w-full z-header">
+      <div class="container flex items-center justify-between">
+        <a href="/" class="text-brand-trust">
+          <svg width="202" height="58">
+            <use href="/icons.svg#logo-full" />
+          </svg>
+        </a>
+        <nav class="relative">
+          <input type="checkbox" id="nav-toggle" class="hidden peer" />
+          <ul
+            class="transition-[opacity,scale] ease-[ease-out,var(--spring-easing)] duration-[0.4s,var(--spring-duration)] scale-75 origin-top-right border-subtle border opacity-0 pointer-events-none peer-checked:scale-100 peer-checked:pointer-events-auto peer-checked:opacity-100 md:scale-100 md:border-none md:pointer-events-auto md:opacity-100 absolute top-full right-0 gap-3 p-4 bg-surface-primary rounded-2xl flex-col md:flex-row md:p-0 md:bg-transparent md:static min-w-max flex md:items-center md:gap-6 font-bold text-brand-trust md:[&>li>a]:py-2 [&>li>a]:block"
+          >
+            <li><a href="/">Home</a></li>
+            <li><a href="services">Services</a></li>
+            <li><a href="about">About Us</a></li>
+            <li><a href="blog">Blog</a></li>
+            <li><a href="contact">Contact Us</a></li>
+          </ul>
+          <label for="nav-toggle" class="p-4 block md:hidden cursor-pointer">
+            <svg width="24" height="24">
+              <use href="/icons.svg#hamburger-menu" />
+            </svg>
+          </label>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section
+        id="hero"
+        class="relative overflow-hidden bg-surface-primary grid min-h-130 py-16 px-5"
+      >
+        <div class="container flex flex-col justify-center items-center">
+          <div class="flex flex-col gap-16 items-center max-w-225">
+            <header class="flex flex-col items-center text-center">
+              <span class="font-medium leading-snug text-text-secondary mb-2 text-sm md:text-base"
+                >INSIGHTS & RESOURCES</span
+              >
+              <h1
+                class="relative text-heading text-[40px] md:text-5xl font-bold leading-[1.1875] tracking-[-0.2px] mb-9.5"
+              >
+                Our Blog
+                <span
+                  class="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 h-1.5 w-40 rounded-full bg-brand-warmth"
+                ></span>
+              </h1>
+              <p>
+                Expert perspectives on senior care, wellness, and the art of aging well. From
+                nutrition to cognitive health, discover the knowledge that empowers families.
+              </p>
+            </header>
+          </div>
+        </div>
+      </section>
+      <section id="services" class="py-16 px-5">
+        <div class="container flex flex-col gap-12">
+          <header class="flex items-center flex-wrap justify-between">
+            <menu class="flex items-center flex-wrap gap-6">
+              <button
+                class="px-4 py-3 rounded-2xl outline -outline-offset-1 outline-subtle text-surface-primary bg-brand-trust"
+              >
+                All
+              </button>
+              <button class="px-4 py-3 rounded-2xl outline -outline-offset-1 outline-subtle">
+                Wellness
+              </button>
+              <button class="px-4 py-3 rounded-2xl outline -outline-offset-1 outline-subtle">
+                Health
+              </button>
+              <button class="px-4 py-3 rounded-2xl outline -outline-offset-1 outline-subtle">
+                Care
+              </button>
+              <button class="px-4 py-3 rounded-2xl outline -outline-offset-1 outline-subtle">
+                Family
+              </button>
+            </menu>
+            <div
+              class="relative grow max-w-114.25 p-4 bg-white rounded-2xl outline -outline-offset-1 outline-subtle inline-flex justify-center items-center gap-2.5"
+            >
+              <svg width="24" height="24" class="text-icon-default">
+                <use href="/icons.svg#search" />
+              </svg>
+              <input type="search" placeholder="Search" class="outline-none grow" />
+            </div>
+          </header>
+          <div
+            class="grid grid-cols-[repeat(auto-fit,minmax(min(390px,100%),1fr))] gap-6 md:gap-y-12"
+          >
+            <article class="rounded-3xl inline-flex flex-col overflow-hidden">
+              <img
+                width="397"
+                height="235"
+                src="/images/cutting-oranges.webp"
+                alt="cutting oranges"
+                class="aspect-397/235 w-full object-cover object-center"
+              />
+              <div class="px-6 pt-6 flex flex-col gap-4">
+                <div class="text-black/60 text-sm flex justify-start items-center gap-2">
+                  <svg width="20" height="20" viewbox="0 0 24 24">
+                    <use href="/icons.svg#calendar" />
+                  </svg>
+                  <span class="leading-none">February 28, 2026</span>
+                </div>
+                <h3 class="text-black text-xl font-bold leading-[1.2]">
+                  Understanding the Transition to Assisted Living: A Guide for Families
+                </h3>
+                <p class="leading-normal">
+                  Moving a loved one into assisted living is a significant decision. Learn how to
+                  navigate this transition with compassion, patience, and confidence, ensuring your
+                  family member feels supported every step.
+                </p>
+                <footer
+                  class="flex items-center justify-between border-t border-subtle mt-auto py-4"
+                >
+                  <div class="flex items-center gap-1 text-black/60">
+                    <svg width="20" height="20" class="text-icon-default">
+                      <use href="/icons.svg#user" />
+                    </svg>
+                    <span class="text-sm">Delight Care Team</span>
+                  </div>
+                  <a href="" class="flex items-center gap-2 text-brand-trust">
+                    <span>Read More</span>
+                    <svg width="20" height="20">
+                      <use href="/icons.svg#arrow-right-2" />
+                    </svg>
+                  </a>
+                </footer>
+              </div>
+            </article>
+            <article class="rounded-3xl inline-flex flex-col overflow-hidden">
+              <img
+                width="397"
+                height="235"
+                src="/images/vegetables-and-bottle-of-water.webp"
+                alt="vegetables and bottle of water"
+                class="aspect-397/235 w-full object-cover object-center"
+              />
+              <div class="px-6 pt-6 flex flex-col gap-4">
+                <div class="text-black/60 text-sm flex justify-start items-center gap-2">
+                  <svg width="20" height="20" viewbox="0 0 24 24">
+                    <use href="/icons.svg#calendar" />
+                  </svg>
+                  <span class="leading-none">February 20, 2026</span>
+                </div>
+                <h3 class="text-black text-xl font-bold leading-[1.2]">
+                  The Importance of Medication Management for Seniors
+                </h3>
+                <p class="leading-normal">
+                  Proper medication management is crucial for senior health. Discover how
+                  professional oversight reduces risks, prevents adverse interactions, and ensures
+                  your loved one stays on track with their treatment plan.
+                </p>
+                <footer
+                  class="flex items-center justify-between border-t border-subtle mt-auto py-4"
+                >
+                  <div class="flex items-center gap-1 text-black/60">
+                    <svg width="20" height="20" class="text-icon-default">
+                      <use href="/icons.svg#user" />
+                    </svg>
+                    <span class="text-sm">Delight Care Team</span>
+                  </div>
+                  <a href="" class="flex items-center gap-2 text-brand-trust">
+                    <span>Read More</span>
+                    <svg width="20" height="20">
+                      <use href="/icons.svg#arrow-right-2" />
+                    </svg>
+                  </a>
+                </footer>
+              </div>
+            </article>
+            <article class="rounded-3xl inline-flex flex-col overflow-hidden">
+              <img
+                width="397"
+                height="235"
+                src="/images/nurse-and-woman-talking.webp"
+                alt="nurse and woman talking"
+                class="aspect-397/235 w-full object-cover object-center"
+              />
+              <div class="px-6 pt-6 flex flex-col gap-4">
+                <div class="text-black/60 text-sm flex justify-start items-center gap-2">
+                  <svg width="20" height="20" viewbox="0 0 24 24">
+                    <use href="/icons.svg#calendar" />
+                  </svg>
+                  <span class="leading-none">February 14, 2026</span>
+                </div>
+                <h3 class="text-black text-xl font-bold leading-[1.2]">
+                  Nutritious and Delicious: How We Plan Meals for Diverse Dietary Needs
+                </h3>
+                <p class="leading-normal">
+                  Every resident deserves meals that are both nourishing and enjoyable. Learn about
+                  our approach to chef-prepared dining that accommodates allergies, medical diets,
+                  and personal preferences.
+                </p>
+                <footer
+                  class="flex items-center justify-between border-t border-subtle mt-auto py-4"
+                >
+                  <div class="flex items-center gap-1 text-black/60">
+                    <svg width="20" height="20" class="text-icon-default">
+                      <use href="/icons.svg#user" />
+                    </svg>
+                    <span class="text-sm">Delight Care Team</span>
+                  </div>
+                  <a href="" class="flex items-center gap-2 text-brand-trust">
+                    <span>Read More</span>
+                    <svg width="20" height="20">
+                      <use href="/icons.svg#arrow-right-2" />
+                    </svg>
+                  </a>
+                </footer>
+              </div>
+            </article>
+            <article class="rounded-3xl inline-flex flex-col overflow-hidden">
+              <img
+                width="397"
+                height="235"
+                src="/images/cutting-oranges.webp"
+                alt="cutting oranges"
+                class="aspect-397/235 w-full object-cover object-center"
+              />
+              <div class="px-6 pt-6 flex flex-col gap-4">
+                <div class="text-black/60 text-sm flex justify-start items-center gap-2">
+                  <svg width="20" height="20" viewbox="0 0 24 24">
+                    <use href="/icons.svg#calendar" />
+                  </svg>
+                  <span class="leading-none">February 8, 2026</span>
+                </div>
+                <h3 class="text-black text-xl font-bold leading-[1.2]">
+                  Daily Wellness Activities That Promote Independence and Joy
+                </h3>
+                <p class="leading-normal">
+                  Staying active — physically, mentally, and socially — is key to quality of life in
+                  assisted living. Explore the wellness programs we offer that keep residents
+                  engaged, happy.
+                </p>
+                <footer
+                  class="flex items-center justify-between border-t border-subtle mt-auto py-4"
+                >
+                  <div class="flex items-center gap-1 text-black/60">
+                    <svg width="20" height="20" class="text-icon-default">
+                      <use href="/icons.svg#user" />
+                    </svg>
+                    <span class="text-sm">Delight Care Team</span>
+                  </div>
+                  <a href="" class="flex items-center gap-2 text-brand-trust">
+                    <span>Read More</span>
+                    <svg width="20" height="20">
+                      <use href="/icons.svg#arrow-right-2" />
+                    </svg>
+                  </a>
+                </footer>
+              </div>
+            </article>
+            <article class="rounded-3xl inline-flex flex-col overflow-hidden">
+              <img
+                width="397"
+                height="235"
+                src="/images/vegetables-and-bottle-of-water.webp"
+                alt="vegetables and bottle of water"
+                class="aspect-397/235 w-full object-cover object-center"
+              />
+              <div class="px-6 pt-6 flex flex-col gap-4">
+                <div class="text-black/60 text-sm flex justify-start items-center gap-2">
+                  <svg width="20" height="20" viewbox="0 0 24 24">
+                    <use href="/icons.svg#calendar" />
+                  </svg>
+                  <span class="leading-none">January 30, 2026</span>
+                </div>
+                <h3 class="text-black text-xl font-bold leading-[1.2]">
+                  The Importance of Medication Management for Seniors
+                </h3>
+                <p class="leading-normal">
+                  With so many options available, finding the right assisted living community can
+                  feel overwhelming. Here are the key factors to evaluate, from staffing ratios to
+                  safety stand
+                </p>
+                <footer
+                  class="flex items-center justify-between border-t border-subtle mt-auto py-4"
+                >
+                  <div class="flex items-center gap-1 text-black/60">
+                    <svg width="20" height="20" class="text-icon-default">
+                      <use href="/icons.svg#user" />
+                    </svg>
+                    <span class="text-sm">Delight Care Team</span>
+                  </div>
+                  <a href="" class="flex items-center gap-2 text-brand-trust">
+                    <span>Read More</span>
+                    <svg width="20" height="20">
+                      <use href="/icons.svg#arrow-right-2" />
+                    </svg>
+                  </a>
+                </footer>
+              </div>
+            </article>
+            <article class="rounded-3xl inline-flex flex-col overflow-hidden">
+              <img
+                width="397"
+                height="235"
+                src="/images/nurse-and-woman-talking.webp"
+                alt="nurse and woman talking"
+                class="aspect-397/235 w-full object-cover object-center"
+              />
+              <div class="px-6 pt-6 flex flex-col gap-4">
+                <div class="text-black/60 text-sm flex justify-start items-center gap-2">
+                  <svg width="20" height="20" viewbox="0 0 24 24">
+                    <use href="/icons.svg#calendar" />
+                  </svg>
+                  <span class="leading-none">January 22, 2026</span>
+                </div>
+                <h3 class="text-black text-xl font-bold leading-[1.2]">
+                  Fire Safety and Emergency Preparedness in Assisted Living
+                </h3>
+                <p class="leading-normal">
+                  Safety is non-negotiable. Learn about the rigorous fire safety protocols,
+                  emergency action plans, and regular drills that keep our residents protected
+                  around the clock.
+                </p>
+                <footer
+                  class="flex items-center justify-between border-t border-subtle mt-auto py-4"
+                >
+                  <div class="flex items-center gap-1 text-black/60">
+                    <svg width="20" height="20" class="text-icon-default">
+                      <use href="/icons.svg#user" />
+                    </svg>
+                    <span class="text-sm">Delight Care Team</span>
+                  </div>
+                  <a href="" class="flex items-center gap-2 text-brand-trust">
+                    <span>Read More</span>
+                    <svg width="20" height="20">
+                      <use href="/icons.svg#arrow-right-2" />
+                    </svg>
+                  </a>
+                </footer>
+              </div>
+            </article>
+          </div>
+          <footer class="flex items-stretch justify-center gap-6">
+            <button
+              class="flex items-center gap-2 py-3 px-4 rounded-full outline -outline-offset-1 outline-subtle text-icon-disabled"
+            >
+              <svg width="20" height="20" class="block shrink-0">
+                <use href="/icons.svg#arrow-right-2" transform="rotate(180 10 10)" />
+              </svg>
+              <span>Previous</span>
+            </button>
+            <button
+              class="aspect-square border border-subtle rounded-full flex items-center justify-center size-13 bg-brand-trust text-surface-primary"
+            >
+              1
+            </button>
+            <button
+              class="aspect-square border border-subtle rounded-full flex items-center justify-center size-13"
+            >
+              2
+            </button>
+            <button
+              class="flex items-center gap-2 py-3 px-4 rounded-full outline -outline-offset-1 outline-subtle"
+            >
+              <span>Next</span>
+              <svg width="20" height="20" class="block shrink-0">
+                <use href="/icons.svg#arrow-right-2" />
+              </svg>
+            </button>
+          </footer>
+        </div>
+      </section>
+      <section id="book" class="py-16 px-5 relative isolate">
+        <div class="absolute inset-0 -z-10">
+          <img
+            src="/images/nurse-talking-to-patient.webp"
+            alt="nurse talking to patient"
+            class="w-full h-full object-top object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-[3px] -z-10"></div>
+        <div class="container flex flex-col items-center gap-12">
+          <header class="flex flex-col items-center text-center max-w-258 text-inverse">
+            <h2
+              class="relative heading-underline-center text-2xl md:text-[32px] font-bold leading-[1.1875] tracking-[-0.2px] mb-9.5"
+            >
+              Have Questions About Senior Care?
+              <span
+                class="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 h-1.5 w-40 rounded-full bg-brand-warmth"
+              ></span>
+            </h2>
+            <p>
+              Our compassionate team is here to guide you every step of the way. Reach out today for
+              a free consultation.
+            </p>
+          </header>
+          <div class="flex flex-wrap items-center justify-center w-full gap-4">
+            <a
+              href=""
+              class="py-4 px-5 md:py-5 md:px-6 flex items-center justify-center gap-2 outline outline-dashed outline-brand-warmth rounded-full text-brand-warmth -outline-offset-1"
+            >
+              <svg width="24" height="24">
+                <use href="/icons.svg#calendar" />
+              </svg>
+              <span>Schedule a Tour Today</span>
+            </a>
+            <a
+              href=""
+              class="py-4 px-5 md:py-5 md:px-6 bg-brand-warmth flex items-center justify-center gap-2 rounded-full text-inverse shadow-[0px_0px_8px_0px_rgba(245,241,232,0.16),inset_1px_0px_8px_0px_rgba(255,255,255,0.16),inset_-1px_0px_8px_0px_rgba(255,255,255,0.16)]"
+            >
+              <svg width="24" height="24">
+                <use href="/icons.svg#telephone" />
+              </svg>
+              <span>Speak With Our Care Team</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-[#091626] py-16 px-5 pb-0">
+      <div class="container text-sm md:text-base text-brand-calm flex flex-col gap-12">
+        <div
+          class="flex flex-wrap items-center md:justify-between gap-x-8 gap-y-12 *:max-w-50.5 *:md:max-w-75.25"
+        >
+          <div class="flex flex-col">
+            <a href="/" class="text-inverse">
+              <svg width="202" height="58">
+                <use href="/icons.svg#logo-full" />
+              </svg>
+            </a>
+            <p>
+              Providing compassionate, dignified care in a warm, homelike environment where every
+              resident is treated like family
+            </p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h2 class="font-bold text-inverse">Quick Links</h2>
+            <ul class="grid gap-3">
+              <li><a href="/">Home</a></li>
+              <li><a href="about">About Us</a></li>
+              <li><a href="services">Services</a></li>
+              <li><a href="blog">Blog</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h2 class="font-bold text-inverse">Contact</h2>
+            <ul class="grid gap-3">
+              <li>
+                <a href="tel:(410) 456-0123" class="flex items-center gap-2">
+                  <svg width="20" height="20">
+                    <use href="/icons.svg#call" />
+                  </svg>
+                  <span>(410) 456-0123</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@DelightHavenliving.com" class="flex items-center gap-2">
+                  <svg width="20" height="20">
+                    <use href="/icons.svg#envelope" />
+                  </svg>
+                  <span>hello@DelightHavenliving.com</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@DelightHavenliving.com" class="flex items-center gap-2">
+                  <svg width="20" height="20">
+                    <use href="/icons.svg#location" />
+                  </svg>
+                  <span>Baltimore, Maryland, USA</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h2 class="font-bold text-inverse">Follow Us</h2>
+            <div class="flex items-stretch gap-3">
+              <a href="" class="inline-block p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#facebook" />
+                </svg>
+              </a>
+              <a href="" class="inline-block p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#linkedin" />
+                </svg>
+              </a>
+              <a href="" class="inline-block p-2 rounded-2xl bg-brand-calm/16">
+                <svg width="24" height="24">
+                  <use href="/icons.svg#instagram" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="pt-6 pb-12 border-t border-subtle/16 flex justify-center items-center gap-6">
+          <p class="text-center text-sm">
+            &copy; 2026 Delight Haven Assited Living. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

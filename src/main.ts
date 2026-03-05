@@ -8,22 +8,11 @@ gsap.registerPlugin(ScrollTrigger);
 window.addEventListener("DOMContentLoaded", () => {
   // --- Testimonials Swiper ---
   new Swiper(".testimonials-swiper", {
-    slidesPerView: 1.2,
-    spaceBetween: 24,
+    slidesPerView: "auto",
+    spaceBetween: 8,
     navigation: {
       nextEl: ".testimonials-next",
       prevEl: ".testimonials-prev",
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 2.2,
-      },
-      1024: {
-        slidesPerView: 3.5,
-      },
-      1280: {
-        slidesPerView: 4.5,
-      },
     },
   });
 
@@ -57,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
         duration: 0.8,
         ease: "back.out(1.3)",
       },
-      "-=1.5",
+      "-=1.75",
     );
 
   // --- Why Section Animations ---
