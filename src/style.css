@@ -159,6 +159,14 @@
   .swiper-button-disabled {
     @apply bg-surface-disabled! text-icon-disabled! cursor-not-allowed pointer-events-none;
   }
+
+  .line {
+    overflow: hidden;
+  }
+
+  .word {
+    will-change: transform, opacity;
+  }
 }
 
 @layer base {

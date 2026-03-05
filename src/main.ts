@@ -2,10 +2,36 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
+import Lenis from "lenis";
+import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
 window.addEventListener("DOMContentLoaded", () => {
+  // --- Initialize Lenis Smooth Scrolling ---
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: "vertical",
+    gestureOrientation: "vertical",
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    touchMultiplier: 2,
+  });
+
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  // Sync Lenis with ScrollTrigger
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
+
   // --- Testimonials Swiper ---
   new Swiper(".testimonials-swiper", {
     slidesPerView: "auto",
@@ -220,31 +246,58 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Section Header Split-Word Animations ---
-  const sectionHeaders = document.querySelectorAll("section h2");
+  // --- Section Header Split-Word Animations with SplitType ---
+  const sectionHeaders = document.querySelectorAll<HTMLElement>("section h2");
   sectionHeaders.forEach((h2) => {
-    const text = h2.textContent?.trim() || "";
-    const words = text.split(/\s+/);
-    h2.innerHTML = words
-      .map(
-        (word) =>
-          `<span class="inline-block overflow-hidden"><span class="inline-block translate-y-full opacity-0 origin-bottom">${word}</span></span>`,
-      )
-      .join(" ");
+    // Preserve any existing children like the animated underline span
+    const underlineSpan = h2.querySelector("span.absolute");
 
-    const wordSpans = h2.querySelectorAll("span > span");
+    // Apply SplitType directly
+    // Note: SplitType wraps text in words and lines, but if there's inline HTML elements,
+    // we need to be careful. The easiest is to extract the text, split it, and re-append the underline.
+    // To cleanly separate the underline, we'll temporarily remove it
+    if (underlineSpan) {
+      h2.removeChild(underlineSpan);
+    }
 
-    gsap.to(wordSpans, {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      stagger: 0.05,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: h2,
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
+    const text = new SplitType(h2, { types: "words,chars" });
+
+    // Re-append the underline if it existed
+    if (underlineSpan) {
+      h2.appendChild(underlineSpan);
+    }
+
+    if (text.words) {
+      gsap.from(text.words, {
+        y: "100%",
+        opacity: 0,
+        duration: 1,
+        stagger: 0.05,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: h2,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+  });
+
+  // --- Magnetic Buttons ---
+  const magneticButtons = document.querySelectorAll<HTMLElement>(".magnetic-btn");
+  magneticButtons.forEach((btn) => {
+    btn.addEventListener("mousemove", (e) => {
+      const rect = btn.getBoundingClientRect();
+      const h = rect.height / 2;
+      const w = rect.width / 2;
+      const x = (e.clientX - rect.left - w) * 0.3; // 0.3 controls the magnet strength
+      const y = (e.clientY - rect.top - h) * 0.3;
+
+      gsap.to(btn, { x: x, y: y, duration: 0.4, ease: "power2.out" });
+    });
+
+    btn.addEventListener("mouseleave", () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
     });
   });
 });
