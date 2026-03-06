@@ -1,0 +1,210 @@
+.toast-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  pointer-events: none;
+  isolation: isolate;
+
+  & > .toast-underlay {
+    position: absolute;
+    width: 90%;
+    height: 30vh;
+    top: 0;
+    transform: translateY(-50%);
+    z-index: -1;
+    filter: blur(50px);
+    border-radius: 50%;
+
+    &.error {
+      background-image: radial-gradient(#ff000075, transparent 80%);
+    }
+
+    &.success {
+      background-image: radial-gradient(#00ff0075, transparent 80%);
+    }
+
+    &.info {
+      background-image: radial-gradient(#87cefa75, transparent 80%);
+    }
+
+    &.warning {
+      background-image: radial-gradient(#ffff0075, transparent 80%);
+    }
+
+    &.loading {
+      background-image: radial-gradient(#ffffff, transparent 80%);
+    }
+  }
+  .toast {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+    pointer-events: auto;
+    margin-bottom: 0.5rem;
+    min-width: 200px;
+    max-width: 95vw;
+    overflow: hidden;
+    padding: 2px;
+    isolation: isolate;
+
+    .toast-underlay {
+      inset: 0;
+      position: absolute;
+      z-index: -1;
+    }
+
+    &.toast-error {
+      .toast-underlay {
+        background: rgb(245, 245, 245) linear-gradient(to right, #ff000080, transparent 80%);
+      }
+      .icon-wrapper {
+        background: #ff000010;
+        box-shadow:
+          inset 0px 1px 1px 0px #ff000050,
+          0px 5px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    &.toast-success {
+      .toast-underlay {
+        background: rgb(245, 245, 245) linear-gradient(to right, #00ff0080, transparent 80%);
+      }
+      .icon-wrapper {
+        background: #00ff0010;
+        box-shadow:
+          inset 0px 1px 1px 0px #00ff0050,
+          0px 5px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    &.toast-info {
+      .toast-underlay {
+        background: rgb(245, 245, 245) linear-gradient(to right, #87cefa80, transparent 80%);
+      }
+      .icon-wrapper {
+        background: #87cefa10;
+        box-shadow:
+          inset 0px 1px 1px 0px #87cefa50,
+          0px 5px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    &.toast-warning {
+      .toast-underlay {
+        background: rgb(245, 245, 245) linear-gradient(to right, #ffff0080, transparent 80%);
+      }
+      .icon-wrapper {
+        background: #ffff0010;
+        box-shadow:
+          inset 0px 1px 1px 0px #ffff0050,
+          0px 5px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    &.toast-loading {
+      .toast-underlay {
+        background: rgb(245, 245, 245) linear-gradient(to right, #303030, transparent 80%);
+      }
+      .icon-wrapper {
+        background: #00000010;
+        box-shadow:
+          inset 0px 1px 1px 0px #86868650,
+          0px 5px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+    .toast-content-wrapper {
+      flex: 1;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: calc(0.75rem - 2px);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      height: 100%;
+
+      .icon-wrapper {
+        padding: 8px;
+        border-radius: 50%;
+
+        svg {
+          overflow: visible;
+          display: block;
+        }
+      }
+    }
+    .toast::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: currentColor;
+      opacity: 0.1;
+      transform-origin: top;
+      transform: scaleY(0);
+    }
+  }
+  /* Toast Types */
+  .toast-success {
+    color: #22c55e;
+  }
+
+  .toast-error {
+    color: #ef4444;
+  }
+
+  .toast-warning {
+    color: #ffff00;
+  }
+
+  .toast-info {
+    color: #87cefa;
+  }
+
+  .toast-loading {
+    color: #a7a7a7;
+  }
+
+  .toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .toast-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .toast-message {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .toast-close {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+  }
+}
