@@ -1,7 +1,8 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Swiper from "swiper/bundle";
-import "swiper/css/bundle";
+import Swiper from "swiper/core";
+import "swiper/css";
+import "swiper/css/navigation";
 import Lenis from "lenis";
 import SplitType from "split-type";
 
@@ -152,7 +153,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const heroTextEls = heroSection.querySelectorAll<HTMLElement>(
       ".max-w-190 > div:first-child, h1, p",
     );
-    const heroCTAs = heroSection.querySelectorAll<HTMLElement>(".mt-5 a");
+    const heroCTAs = heroSection.querySelectorAll<HTMLElement>(".mt-5 :where(a, button)");
 
     const heroTl = gsap.timeline({
       defaults: { ease: "power3.out", duration: 1.2 },
@@ -489,14 +490,13 @@ if (modal && modalCard) {
 
       if (!full_name || !email || !phone || !visit_date) {
         Toast.error("Please fill in all fields.");
-        scheduleDateSubmitButton.disabled = false;
         return;
       }
 
       try {
         scheduleDateSubmitButton.loading();
         scheduleDateButtons.forEach((button) => button.loading());
-        const response = await fetch("http://localhost:3000/api/schedule-date", {
+        const response = await fetch("/api/schedule-date", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -526,6 +526,54 @@ if (modal && modalCard) {
         scheduleDateSubmitButton.error();
         scheduleDateButtons.forEach((button) => button.error());
         Toast.error(error.message || "Failed to schedule date");
+      }
+    };
+  }
+
+  // newsletter stuff
+  const newsLetterSubmitButton = document.getElementById(
+    "newsletter-form-submit-button",
+  ) as SaveButtonElement;
+  const newsLetterForm = document.getElementById("newsletter-form") as HTMLFormElement;
+  if (newsLetterSubmitButton) {
+    SaveButton(newsLetterSubmitButton);
+  }
+
+  if (newsLetterForm) {
+    newsLetterForm.onsubmit = async (event) => {
+      event.preventDefault();
+      const formData = new FormData(newsLetterForm);
+      const email = formData.get("email") as string;
+
+      if (!email) {
+        Toast.error("Please add an email.");
+        return;
+      }
+
+      try {
+        newsLetterSubmitButton.loading();
+        const response = await fetch("/api/newsletter", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || "Failed to sign up for newsletter");
+        }
+
+        Toast.success(data.message);
+        newsLetterSubmitButton.success();
+        newsLetterForm.reset();
+      } catch (error: any) {
+        newsLetterSubmitButton.error();
+        Toast.error(error.message || "Failed to sign up for newsletter");
       }
     };
   }

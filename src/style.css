@@ -127,7 +127,7 @@
     rgba(0, 0, 0, 0) -119.66%,
     #000000 98.19%
   );
-  --z-index-header: 10;
+  --z-index-header: 20;
 }
 
 @layer utility {
