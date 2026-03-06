@@ -62,14 +62,8 @@
     }
 
     &.toast-error {
-      .toast-underlay {
-        background: rgb(245, 245, 245) linear-gradient(to right, #ff000080, transparent 80%);
-      }
       .icon-wrapper {
         background: #ff000010;
-        box-shadow:
-          inset 0px 1px 1px 0px #ff000050,
-          0px 5px 10px rgba(0, 0, 0, 0.1);
       }
     }
 
@@ -79,9 +73,6 @@
       }
       .icon-wrapper {
         background: #00ff0010;
-        box-shadow:
-          inset 0px 1px 1px 0px #00ff0050,
-          0px 5px 10px rgba(0, 0, 0, 0.1);
       }
     }
 
@@ -91,9 +82,6 @@
       }
       .icon-wrapper {
         background: #87cefa10;
-        box-shadow:
-          inset 0px 1px 1px 0px #87cefa50,
-          0px 5px 10px rgba(0, 0, 0, 0.1);
       }
     }
 
@@ -103,9 +91,6 @@
       }
       .icon-wrapper {
         background: #ffff0010;
-        box-shadow:
-          inset 0px 1px 1px 0px #ffff0050,
-          0px 5px 10px rgba(0, 0, 0, 0.1);
       }
     }
 
@@ -114,15 +99,12 @@
         background: rgb(245, 245, 245) linear-gradient(to right, #303030, transparent 80%);
       }
       .icon-wrapper {
-        background: #00000010;
-        box-shadow:
-          inset 0px 1px 1px 0px #86868650,
-          0px 5px 10px rgba(0, 0, 0, 0.1);
+        background: #ffffff10;
       }
     }
     .toast-content-wrapper {
       flex: 1;
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgb(255, 255, 255);
       border-radius: calc(0.75rem - 2px);
       padding: 16px;
       display: flex;

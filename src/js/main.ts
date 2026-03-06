@@ -463,7 +463,7 @@ if (modal && modalCard) {
     if (e.key === "Escape" && modal.style.display !== "none") closeModal();
   });
 
-  const scheduleDateButton = [
+  const scheduleDateButtons = [
     ...document.querySelectorAll<HTMLButtonElement>(".schedule-date"),
   ] as SaveButtonElement[];
 
@@ -473,54 +473,60 @@ if (modal && modalCard) {
   ) as SaveButtonElement;
   const scheduleDateForm = document.getElementById("schedule-date-form") as HTMLFormElement;
 
-  scheduleDateButton.forEach((button) => {
+  scheduleDateButtons.forEach((button) => {
     SaveButton(button);
   });
   SaveButton(scheduleDateSubmitButton);
 
-  scheduleDateForm.onsubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(scheduleDateForm);
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const phone = formData.get("phone") as string;
-    const visitDate = formData.get("visit-date") as string;
+  if (scheduleDateForm) {
+    scheduleDateForm.onsubmit = async (event) => {
+      event.preventDefault();
+      const formData = new FormData(scheduleDateForm);
+      const full_name = formData.get("name") as string;
+      const email = formData.get("email") as string;
+      const phone = formData.get("phone") as string;
+      const visit_date = formData.get("visit-date") as string;
 
-    if (!name || !email || !phone || !visitDate) {
-      Toast.error("Please fill in all fields.");
-      scheduleDateSubmitButton.disabled = false;
-      return;
-    }
-
-    try {
-      scheduleDateSubmitButton.loading();
-      scheduleDateSubmitButton.disabled = true;
-      const response = await fetch("/api/schedule-date", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fullName: name,
-          email,
-          phone,
-          visitDate,
-        }),
-      });
-
-      if (!response) {
-        throw new Error("Failed to schedule date");
+      if (!full_name || !email || !phone || !visit_date) {
+        Toast.error("Please fill in all fields.");
+        scheduleDateSubmitButton.disabled = false;
+        return;
       }
 
-      const data = await response.json();
+      try {
+        scheduleDateSubmitButton.loading();
+        scheduleDateButtons.forEach((button) => button.loading());
+        const response = await fetch("http://localhost:3000/api/schedule-date", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            full_name,
+            email,
+            phone,
+            visit_date,
+          }),
+        });
 
-      Toast.success(data.message);
-      scheduleDateSubmitButton.success();
-      scheduleDateForm.reset();
-      closeModal();
-    } catch (error: any) {
-      scheduleDateSubmitButton.error();
-      Toast.error(error.message || "Failed to schedule date");
-    }
-  };
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || "Failed to schedule date");
+        }
+
+        Toast.success(data.message);
+        scheduleDateSubmitButton.success(true);
+        scheduleDateButtons.forEach((button) => button.success(true));
+        scheduleDateForm.reset();
+        setTimeout(() => {
+          closeModal();
+        }, 1000);
+      } catch (error: any) {
+        scheduleDateSubmitButton.error();
+        scheduleDateButtons.forEach((button) => button.error());
+        Toast.error(error.message || "Failed to schedule date");
+      }
+    };
+  }
 }
