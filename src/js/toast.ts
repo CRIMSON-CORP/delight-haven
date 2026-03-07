@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid/non-secure";
 import { makeIconFromPath } from "./utils";
+import "../toast.css";
 
 // ---------------------------------------------------------------------------
 // Types

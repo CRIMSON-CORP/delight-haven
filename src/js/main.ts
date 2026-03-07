@@ -6,9 +6,7 @@ import "swiper/css/navigation";
 import Lenis from "lenis";
 import SplitType from "split-type";
 
-import intlTelInput from "intl-tel-input";
 import { SaveButton, type SaveButtonElement } from "./utils";
-import { Toast } from "./toast";
 
 gsap.registerPlugin(ScrollTrigger);
 let lenis: Lenis | null = null;
@@ -237,7 +235,7 @@ window.addEventListener("DOMContentLoaded", () => {
           duration: 2,
           ease: "power1.inOut",
         },
-        "-=0.5",
+        "-=1.5",
       );
     }
 
@@ -377,15 +375,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const phoneInput = document.querySelector<HTMLInputElement>("#phone");
   const visitDateInput = document.querySelector<HTMLInputElement>("#visit-date");
-
-  if (phoneInput) {
-    intlTelInput(phoneInput, {
-      loadUtils: () => import("intl-tel-input/utils"),
-    });
-  }
-
   if (visitDateInput) {
     visitDateInput.min = new Date().toISOString().split("T")[0];
   }
@@ -401,7 +391,26 @@ if (modal && modalCard) {
   // Pre-set the card transform origin so the 3D flip feels like it comes toward the viewer
   gsap.set(modalCard, { transformOrigin: "50% 0%", transformStyle: "preserve-3d" });
 
-  function openModal() {
+  let intlInitialized = false;
+  async function openModal() {
+    if (!intlInitialized) {
+      const phoneInput = document.querySelector<HTMLInputElement>("#phone");
+      if (phoneInput) {
+        // Lazy load intl-tel-input library AND its styles
+        const [intlModule] = await Promise.all([
+          import("intl-tel-input"),
+          /* @ts-ignore: Vite handles CSS imports but TS may not have declarations */
+          import("intl-tel-input/styles"),
+        ]);
+        const intlTelInput = intlModule.default;
+
+        intlTelInput(phoneInput, {
+          loadUtils: () => import("intl-tel-input/utils"),
+        });
+        intlInitialized = true;
+      }
+    }
+
     // Show the backdrop
     gsap.set(modal!, { display: "flex" });
 
@@ -489,6 +498,7 @@ if (modal && modalCard) {
       const visit_date = formData.get("visit-date") as string;
 
       if (!full_name || !email || !phone || !visit_date) {
+        const { Toast } = await import("./toast");
         Toast.error("Please fill in all fields.");
         return;
       }
@@ -515,6 +525,7 @@ if (modal && modalCard) {
           throw new Error(data.message || "Failed to schedule date");
         }
 
+        const { Toast } = await import("./toast");
         Toast.success(data.message);
         scheduleDateSubmitButton.success(true);
         scheduleDateButtons.forEach((button) => button.success(true));
@@ -525,6 +536,7 @@ if (modal && modalCard) {
       } catch (error: any) {
         scheduleDateSubmitButton.error();
         scheduleDateButtons.forEach((button) => button.error());
+        const { Toast } = await import("./toast");
         Toast.error(error.message || "Failed to schedule date");
       }
     };
@@ -546,6 +558,7 @@ if (modal && modalCard) {
       const email = formData.get("email") as string;
 
       if (!email) {
+        const { Toast } = await import("./toast");
         Toast.error("Please add an email.");
         return;
       }
@@ -568,11 +581,13 @@ if (modal && modalCard) {
           throw new Error(data.message || "Failed to sign up for newsletter");
         }
 
+        const { Toast } = await import("./toast");
         Toast.success(data.message);
         newsLetterSubmitButton.success();
         newsLetterForm.reset();
       } catch (error: any) {
         newsLetterSubmitButton.error();
+        const { Toast } = await import("./toast");
         Toast.error(error.message || "Failed to sign up for newsletter");
       }
     };
