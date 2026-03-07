@@ -7,6 +7,7 @@ import { join } from "path";
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? "http://localhost:5181";
 const PORT = Number(process.env.PORT ?? 3000);
 const DIST_DIR = join(import.meta.dir, "../dist");
+const TEMPLATES_DIR = join(import.meta.dir, "../server/templates");
 
 // ---------------------------------------------------------------------------
 // CORS helpers
@@ -99,7 +100,7 @@ async function handleScheduleDate(req: Request): Promise<Response> {
   sendMail({
     to: email,
     subject: "Schedule!",
-    html: await renderTemplate("./templates/schedule-template.html", {
+    html: await renderTemplate(`${TEMPLATES_DIR}/schedule-template.html`, {
       full_name,
       visit_date,
       email,
@@ -151,7 +152,7 @@ async function handleNewsletter(req: Request): Promise<Response> {
   sendMail({
     to: email,
     subject: "Newsletter",
-    html: await renderTemplate("./templates/news-letter-template.html", {
+    html: await renderTemplate(`${TEMPLATES_DIR}/news-letter-template.html`, {
       domain: process.env.DOMAIN,
     }),
   });
