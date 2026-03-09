@@ -184,4 +184,9 @@
   button {
     cursor: pointer;
   }
+
+  svg {
+    flex: none;
+    display: block;
+  }
 }
