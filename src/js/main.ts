@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Swiper from "swiper/core";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Lenis from "lenis";
@@ -29,6 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   gsap.ticker.lagSmoothing(0);
 
+  Swiper.use([Navigation]);
   // --- Testimonials Swiper ---
   new Swiper(".testimonials-swiper", {
     slidesPerView: "auto",
