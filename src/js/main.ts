@@ -381,6 +381,16 @@ window.addEventListener("DOMContentLoaded", () => {
   if (visitDateInput) {
     visitDateInput.min = new Date().toISOString().split("T")[0];
   }
+
+  const contactForm = document.getElementById("contact-form") as HTMLFormElement;
+
+  if (contactForm) {
+    contactForm.onsubmit = async (event) => {
+      event.preventDefault();
+      const contactFormSubmitHandler = (await import("./contact-form-submit-handler")).default;
+      contactFormSubmitHandler(contactForm, event);
+    };
+  }
 });
 
 // --- Schedule Date Modal: 3D Open / Close ---

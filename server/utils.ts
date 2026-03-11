@@ -26,15 +26,18 @@ export async function sendMail({
   to,
   subject,
   html,
+  replyTo,
 }: {
   to: string;
   subject: string;
   html: string;
+  replyTo?: string;
 }) {
   return await transporter.sendMail({
     from: `"Delight Haven" <${process.env.MAILER_EMAIL}>`,
     to,
     subject,
     html,
+    replyTo,
   });
 }

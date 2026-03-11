@@ -163,6 +163,52 @@ async function handleNewsletter(req: Request): Promise<Response> {
   });
 }
 
+/** POST /api/contact */
+async function handleContact(req: Request): Promise<Response> {
+  let body: Record<string, unknown>;
+
+  try {
+    body = await req.json();
+  } catch {
+    return json({ success: false, message: "Invalid JSON body." }, 400);
+  }
+
+  const { full_name, email, message } = body as {
+    full_name?: string;
+    email?: string;
+    message?: string;
+  };
+
+  // Basic server-side validation
+  if (!full_name || !email || !message) {
+    return json({ success: false, message: "All fields are required." }, 422);
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return json({ success: false, message: "Please enter a valid email address." }, 422);
+  }
+
+  console.log("[Contact] New Message:", { full_name, email, message });
+
+  sendMail({
+    to: process.env.MAILER_EMAIL!,
+    subject: "New Message",
+    html: `
+    <h1>You have a New Message</h1>
+    <p>Full Name: ${full_name}</p>
+    <p>Email: ${email}</p>
+    <p>Message: ${message}</p>
+    `,
+    replyTo: email,
+  });
+
+  return json({
+    success: true,
+    message: "Your message has been sent successfully.",
+  });
+}
+
 // ---------------------------------------------------------------------------
 // Router
 // ---------------------------------------------------------------------------
@@ -184,6 +230,10 @@ Bun.serve({
 
     if (url.pathname === "/api/newsletter" && req.method === "POST") {
       return handleNewsletter(req);
+    }
+
+    if (url.pathname === "/api/contact" && req.method === "POST") {
+      return handleContact(req);
     }
 
     if (url.pathname === "/health" && req.method === "GET") {
