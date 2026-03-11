@@ -414,9 +414,20 @@ if (modal && modalCard) {
         ]);
         const intlTelInput = intlModule.default;
 
-        intlTelInput(phoneInput, {
+        const iti = intlTelInput(phoneInput, {
+          initialCountry: "auto",
+          geoIpLookup: (callback) => {
+            fetch("https://ipapi.co/json")
+              .then((res) => res.json())
+              .then((data) => callback(data.country_code))
+              .catch(() => callback("us"));
+          },
+          separateDialCode: true,
+          autoPlaceholder: "aggressive",
           loadUtils: () => import("intl-tel-input/utils"),
         });
+        // @ts-ignore
+        phoneInput._iti = iti;
         intlInitialized = true;
       }
     }

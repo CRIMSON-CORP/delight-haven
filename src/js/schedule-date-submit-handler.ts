@@ -10,7 +10,9 @@ export default async function scheduleDateFormHandler(
   const formData = new FormData(form);
   const full_name = formData.get("name") as string;
   const email = formData.get("email") as string;
-  const phone = formData.get("phone") as string;
+  const phoneInput = form.querySelector<HTMLInputElement>("#phone");
+  // @ts-ignore
+  const phone = phoneInput?._iti ? phoneInput._iti.getNumber() : (formData.get("phone") as string);
   const visit_date = formData.get("visit-date") as string;
 
   const submitter = event.submitter as SaveButtonElement | null;
