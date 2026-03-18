@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http: blob: data:;" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -19,20 +20,20 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.delighthaven.com/about.html" />
+    <meta property="og:url" content="https://www.delighthaven.com/about" />
     <meta property="og:title" content="Assisted Living in Randallstown, MD | Delight Haven" />
     <meta property="og:description" content="Delight Haven Assisted Living in Randallstown, MD, offers personalized senior care near Paxton Road. Safe, comfortable living with compassionate support." />
     <meta property="og:image" content="https://www.delighthaven.com/images/og-image.webp" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.delighthaven.com/about.html" />
+    <meta property="twitter:url" content="https://www.delighthaven.com/about" />
     <meta property="twitter:title" content="Assisted Living in Randallstown, MD | Delight Haven" />
     <meta property="twitter:description" content="Delight Haven Assisted Living in Randallstown, MD, offers personalized senior care near Paxton Road. Safe, comfortable living with compassionate support." />
     <meta property="twitter:image" content="https://www.delighthaven.com/images/og-image.webp" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.delighthaven.com/about.html" />
+    <link rel="canonical" href="https://www.delighthaven.com/about" />
   </head>
   <body class="bg-canvas">
     <header class="p-5 backdrop-blur-xs bg-nav-light fixed top-0 left-0 w-full z-header">
@@ -635,8 +636,7 @@
             <label for="name" class="md:text-xl">Full Name</label>
             <input
               type="text"
-              id="name"
-              name="name"
+              id="name" name="name" autocomplete="name"
               class="border border-border-default rounded-2xl p-4 outline-dashed outline outline-offset-2 outline-transparent focus:outline-brand-trust"
               placeholder="Your full name"
               required
@@ -646,8 +646,7 @@
             <label for="email" class="md:text-xl">Email Address</label>
             <input
               type="email"
-              id="email"
-              name="email"
+              id="email" name="email" autocomplete="email"
               class="border border-border-default rounded-2xl p-4 outline-dashed outline outline-offset-2 outline-transparent focus:outline-brand-trust"
               placeholder="your@email.com"
               required
@@ -657,8 +656,7 @@
             <label for="phone" class="md:text-xl">Phone Number</label>
             <input
               type="tel"
-              id="phone"
-              name="phone"
+              id="phone" name="phone" autocomplete="tel"
               class="border border-border-default rounded-2xl p-4 outline-dashed outline outline-offset-2 outline-transparent focus:outline-brand-trust w-full"
               placeholder="(410) 456-0123"
               required
