@@ -23,24 +23,12 @@ export default async function newsletterFormSubmitter(form: HTMLFormElement, eve
   }
 
   try {
-    const response = await fetch("/api/newsletter", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || "Failed to sign up for newsletter");
-    }
+    submitter.loading();
+    // Simulate network delay
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     const { Toast } = await import("./toast");
-    Toast.success(data.message);
+    Toast.success("Successfully signed up for the newsletter!");
     submitter.success();
     form.reset();
   } catch (error: any) {
