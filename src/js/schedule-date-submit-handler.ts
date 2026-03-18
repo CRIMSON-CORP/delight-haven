@@ -1,4 +1,5 @@
 import { SaveButton, type SaveButtonElement } from "./utils";
+import sendScheduleEmail from "../services/emailjs/sendScheduleEmail";
 
 let isASaveButton = false;
 export default async function scheduleDateFormHandler(
@@ -14,6 +15,18 @@ export default async function scheduleDateFormHandler(
   // @ts-ignore
   const phone = phoneInput?._iti ? phoneInput._iti.getNumber() : (formData.get("phone") as string);
   const visit_date = formData.get("visit-date") as string;
+  const botField = formData.get("address_zip_code") as string;
+
+  if (botField) {
+    // If the honeypot field is filled out, reject the submission silently (so bots don't know they are caught)
+    const { Toast } = await import("./toast");
+    Toast.success("Your submission has been received.");
+    form.reset();
+    setTimeout(() => {
+      closeModal();
+    }, 1000);
+    return;
+  }
 
   const submitter = event.submitter as SaveButtonElement | null;
   if (!submitter) return;
@@ -40,27 +53,17 @@ export default async function scheduleDateFormHandler(
   try {
     submitter.loading();
     scheduleDateButtons.forEach((button) => button.loading());
-    const response = await fetch("/api/schedule-date", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        full_name,
-        email,
-        phone,
-        visit_date,
-      }),
+    await sendScheduleEmail({
+      full_name,
+      email,
+      phone,
+      visit_date,
     });
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || "Failed to schedule date");
-    }
-
     const { Toast } = await import("./toast");
-    Toast.success(data.message);
+    Toast.success(
+      `Thank you, ${full_name}! Your visit is scheduled for ${new Date(visit_date).toLocaleDateString("en-US", { dateStyle: "long" })}. We'll be in touch shortly.`,
+    );
     submitter.success(true);
     scheduleDateButtons.forEach((button) => button.success(true));
     form.reset();
@@ -69,6 +72,7 @@ export default async function scheduleDateFormHandler(
     }, 1000);
   } catch (error: any) {
     submitter.error();
+    console.log(error);
     scheduleDateButtons.forEach((button) => button.error());
     const { Toast } = await import("./toast");
     Toast.error(error.message || "Failed to schedule date");

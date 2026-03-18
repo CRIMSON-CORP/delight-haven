@@ -187,6 +187,11 @@
                   rows="4"
                 ></textarea>
               </div>
+              <input type="text" name="address_zip_code" style="display:none !important;" tabindex="-1" autocomplete="off" />
+              <input type="hidden" name="form_time" id="form_time" value="" />
+              <script>
+                document.getElementById('form_time').value = new Date().toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' });
+              </script>
               <button
                 id="schedule-date-submit-button"
                 type="submit"
