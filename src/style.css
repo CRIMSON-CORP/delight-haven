@@ -126,6 +126,7 @@
     #000000 98.19%
   );
   --z-index-header: 20;
+  --z-index-modal: 30;
 }
 
 @layer utility {
