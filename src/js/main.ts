@@ -355,24 +355,21 @@ window.addEventListener("DOMContentLoaded", () => {
   // getBoundingClientRect() after a GSAP transform write triggers a layout flush;
   // reading it once on enter and reusing it is both correct and perf-friendly.
   const magneticButtons = document.querySelectorAll<HTMLElement>(".magnetic-btn");
-  magneticButtons.forEach((btn) => {
-    let cachedRect: DOMRect | null = null;
-
-    btn.addEventListener("mouseenter", () => {
-      cachedRect = btn.getBoundingClientRect();
-    });
-
-    btn.addEventListener("mousemove", (e) => {
-      if (!cachedRect) return;
-      const x = (e.clientX - cachedRect.left - cachedRect.width / 2) * 0.3;
-      const y = (e.clientY - cachedRect.top - cachedRect.height / 2) * 0.3;
-      gsap.to(btn, { x, y, duration: 0.4, ease: "power2.out" });
-    });
-
-    btn.addEventListener("mouseleave", () => {
-      cachedRect = null;
-      gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "expo.out" });
-    });
+  magneticButtons.forEach(() => {
+    // let cachedRect: DOMRect | null = null;
+    // btn.addEventListener("mouseenter", () => {
+    //   cachedRect = btn.getBoundingClientRect();
+    // });
+    // btn.addEventListener("mousemove", (e) => {
+    //   if (!cachedRect) return;
+    //   const x = (e.clientX - cachedRect.left - cachedRect.width / 2) * 0.3;
+    //   const y = (e.clientY - cachedRect.top - cachedRect.height / 2) * 0.3;
+    //   gsap.to(btn, { x, y, duration: 0.4, ease: "power2.out" });
+    // });
+    // btn.addEventListener("mouseleave", () => {
+    //   cachedRect = null;
+    //   gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "expo.out" });
+    // });
   });
 
   const visitDateInput = document.querySelector<HTMLInputElement>("#visit-date");
